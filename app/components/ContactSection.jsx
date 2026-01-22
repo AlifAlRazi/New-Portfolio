@@ -221,7 +221,7 @@ export default function ContactSection() {
             
             <div className="space-y-4">
               <Link 
-                href="https://github.com/ALIF-AL-RAZI" 
+                href="https://github.com/AlifAlRazi" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-md hover:bg-card transition-colors border border-transparent hover:border-border group"
@@ -231,12 +231,12 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-medium">GitHub</h4>
-                  <p className="text-sm text-muted-foreground">github.com/ALIF-AL-RAZI</p>
+                  <p className="text-sm text-muted-foreground">github.com/AlifAlRazi</p>
                 </div>
               </Link>
               
               <Link 
-                href="https://linkedin.com/in/alif-al-razi" 
+                href="https://linkedin.com/in/alifalrazi" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-md hover:bg-card transition-colors border border-transparent hover:border-border group"
@@ -246,7 +246,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-medium">LinkedIn</h4>
-                  <p className="text-sm text-muted-foreground">linkedin.com/in/alif-al-razi</p>
+                  <p className="text-sm text-muted-foreground">linkedin.com/in/alifalrazi</p>
                 </div>
               </Link>
               
