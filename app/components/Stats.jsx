@@ -30,17 +30,17 @@ const Stats = () => {
                         className="flex-1 flex gap-4 items-center justify-center xl:justify-start" 
                         key={index}>
                             <CountUp
-                            end={item.num}
-                            duration={5}
-                            delay={2}
-                            className="text-4xl xl:text-6xl font-extrabold"
-                            
+                              end={item.num}
+                              duration={5}
+                              delay={2}
+                              className="text-4xl xl:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400 drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] dark:drop-shadow-[0_0_20px_rgba(45,212,191,0.3)]"
                             />
                             <p
-                            className={`${item.text.length < 15 ? "max-w-[100px]":"max-w[150px]"}
-                            leading-snug text-white/80`}
+                              className={`${item.text.length < 15 ? "max-w-[100px]" : "max-w-[150px]"}
+                              leading-snug text-slate-600 dark:text-slate-300 font-medium`}
                             >
-                            {item.text}</p>
+                              {item.text}
+                            </p>
                         </div>
                     )
                 })}

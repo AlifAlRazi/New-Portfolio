@@ -36,13 +36,17 @@ function SkillIcon({ icon: Icon, name, index }) {
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      <div className="flex flex-col items-center justify-center p-4 bg-card rounded-lg border border-border hover:border-primary hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-        <Icon className="w-10 h-10 text-primary mb-2" />
-        <span className="text-sm font-medium">{name}</span>
+      <div className="constant-border-card transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+        <div className="constant-border-inner flex flex-col items-center justify-center p-6 backdrop-blur-md bg-white/95 dark:bg-slate-950/95 transition-all duration-300">
+          <div className="mb-3 transition-transform duration-500 group-hover:scale-110">
+            <Icon className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+          </div>
+          <span className="text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{name}</span>
+        </div>
       </div>
       
       {showTooltip && (
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-popover text-popover-foreground text-xs rounded shadow-lg z-10 whitespace-nowrap">
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-1.5 bg-slate-900 dark:bg-slate-800 text-white text-xs font-bold rounded-lg shadow-xl z-20 whitespace-nowrap animate-in fade-in zoom-in duration-200 border border-white/10">
           {name}
         </div>
       )}
@@ -60,9 +64,9 @@ function SkillCategory({ title, icon: Icon, skills }) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex items-center gap-2">
-        <Icon className="text-primary" size={20} />
-        <h3 className="text-xl font-semibold">{title}</h3>
+      <div className="flex items-center gap-3 mb-6">
+        <Icon className="text-blue-600 dark:text-blue-400 opacity-80" size={24} />
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">{title}</h3>
       </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -153,8 +157,8 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-20 px-4">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center">
-          My <span className="text-primary">Skills</span>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-16 text-center">
+          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400">Skills</span>
         </h2>
         
         <div className="grid grid-cols-1 gap-12">
