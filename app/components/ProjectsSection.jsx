@@ -165,40 +165,62 @@ export default function ProjectsSection() {
   };
   
   const projects = [
+{
+  id: 1,
+  title: "AI-Powered PDF Reading Tool",
+  shortDescription: "An AI-based tool to read, understand, and interact with PDFs",
+  description:
+    "A live AI-powered PDF reading tool that allows users to upload books or documents, read them online, and interact with the content using AI. Users can select text for explanations, ask questions directly from the PDF, translate passages, and access previous chats and files. The project is currently a working demo and not yet commercial.",
+  image: "/images/aiReader.png",
+  technologies: [
+    "Next.js",
+    "OpenAI API",
+    "RAG (Retrieval-Augmented Generation)",
+    "Cloudinary",
+    "Google Authentication"
+  ],
+  github: null,
+  liveDemo: "https://ai-reader-blue.vercel.app/",
+  features: [
+    "Google sign-in authentication",
+    "Upload and read PDFs or books online",
+    "AI-powered explanations for selected text",
+    "Ask questions directly from PDF content",
+    "Translate text into other languages",
+    "Saved previous chats and uploaded files",
+    "Free mode with limited prompts"
+  ]
+},
+
     {
-      id: 1, // Added missing id
-      title: "E-Commerce Platform",
-      shortDescription: "A full-stack e-commerce solution",
-      description: "A comprehensive e-commerce platform with product management, shopping cart, user authentication, and payment processing capabilities.",
-      image: "/images/project1.jpg",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com/yourusername/ecommerce-platform",
-      liveDemo: "https://ecommerce-demo.example.com",
-      features: [
-        "User authentication and profile management",
-        "Product catalog with search and filtering",
-        "Shopping cart and checkout process",
-        "Payment processing with Stripe",
-        "Order history and tracking"
-      ]
-    },
-    {
-      id: 2, // Added missing id
-      title: "Task Management App",
-      shortDescription: "Organize your tasks efficiently",
-      description: "A task management application that helps users organize their work with features like task categorization, due dates, and progress tracking.",
-      image: "/images/project2.jpg",
-      technologies: ["Next.js", "Tailwind CSS", "PostgreSQL", "Prisma"],
-      github: "https://github.com/yourusername/task-manager",
-      liveDemo: "https://task-manager-demo.example.com",
-      features: [
-        "Task creation and editing",
-        "Categories and tags for organization",
-        "Due date reminders",
-        "Progress tracking and statistics",
-        "Collaborative features for team tasks"
-      ]
-    },
+  id: 2,
+  title: "Emailyourprofessor.com",
+  shortDescription: "AI-powered platform to help students write personalized emails to professors",
+  description:
+    "Emailyourprofessor.com is an AI-powered web application that helps students generate professional, personalized academic emails. The system uses student bio and professor bio to craft context-aware emails, supports finding universities and professors, manages sent and scheduled emails, and provides analytics through a modern dashboard.",
+  image: "/images/emailProfessor.png",
+  technologies: [
+    "Next.js",
+    "Express.js",
+    "MongoDB",
+    "OpenAI API"
+  ],
+  github: null,
+  liveDemo: "https://emailyourprofessor.com",
+  features: [
+    "AI-generated emails based on student bio and professor bio",
+    "Find universities and professors with detailed profiles",
+    "Professor bio–aware email personalization",
+    "Compose, send, and schedule emails",
+    "Dashboard with email analytics and activity overview",
+    "Track total, sent, and scheduled emails",
+    "Manage professor contacts",
+    "Bulk email support",
+    "Saved email history and previous interactions",
+    "Free plan with limits and premium upgrade option"
+  ]
+},
+
     {
       id: 3, // Added missing id
       title: "Weather Dashboard",
