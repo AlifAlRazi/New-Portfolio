@@ -221,23 +221,32 @@ export default function ProjectsSection() {
   ]
 },
 
-    {
-      id: 3, // Added missing id
-      title: "Weather Dashboard",
-      shortDescription: "Real-time weather information",
-      description: "A weather dashboard that provides real-time weather information for locations worldwide, with features like forecasts, historical data, and weather maps.",
-      image: "/images/project3.jpg",
-      technologies: ["React", "Chart.js", "OpenWeather API", "Geolocation API"],
-      github: "https://github.com/yourusername/weather-dashboard",
-      liveDemo: "https://weather-dashboard-demo.example.com",
-      features: [
-        "Current weather conditions",
-        "5-day forecast",
-        "Historical weather data",
-        "Interactive weather maps",
-        "Location-based weather using geolocation"
-      ]
-    },
+{
+  id: 3,
+  title: "AI T-Shirt Designer",
+  shortDescription: "Create custom AI-generated t-shirt designs in seconds",
+  description:
+    "An AI-powered t-shirt design platform that allows users to create unique, print-ready designs by simply describing their idea. No design skills are required. Users can generate designs instantly, preview them on a t-shirt mockup, browse inspiration from a gallery, and start designing with a clean, modern interface.",
+  image: "/images/aiTshirt.png",
+  technologies: [
+    "Next.js",
+    "Tailwind CSS",
+    "OpenAI API",
+    "AI Image Generation"
+  ],
+  github: null,
+  liveDemo: "https://ai-t-shirt-pi.vercel.app/design",
+  features: [
+    "AI-generated t-shirt designs from text prompts",
+    "Live t-shirt mockup preview",
+    "One-click design generation",
+    "No design skills required",
+    "Gallery with design inspiration",
+    "Clean landing page with CTA-focused UI",
+    "Fast and responsive user experience"
+  ]
+},
+
     {
       id: 4, // Added missing id
       title: "Portfolio Website",
