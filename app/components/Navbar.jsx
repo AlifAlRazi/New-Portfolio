@@ -81,13 +81,13 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
         scrolled
-          ? "bg-background/80 backdrop-blur-md shadow-md py-2"
+          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 py-2 shadow-sm"
           : "bg-transparent py-4"
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-primary">
+        <Link href="/" className="text-xl md:text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400">
           ALIF AL RAZI
         </Link>
 
@@ -96,67 +96,77 @@ export default function Navbar() {
           <button
             onClick={() => navigateToSection("about")}
             className={cn(
-              "text-foreground hover:text-primary transition-colors relative",
-              "after:content-[''] after:absolute after:left-0 after:bottom-[-4px]",
-              "after:h-[2px] after:bg-primary after:transition-all after:duration-300",
+              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
               activeSection === "about"
-                ? "text-primary after:w-full"
-                : "after:w-0 hover:after:w-full"
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
             )}
           >
             About
+            <span className={cn(
+              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
+              activeSection === "about" ? "w-full" : "w-0 group-hover:w-full"
+            )}></span>
           </button>
           <button
             onClick={() => navigateToSection("projects")}
             className={cn(
-              "text-foreground hover:text-primary transition-colors relative",
-              "after:content-[''] after:absolute after:left-0 after:bottom-[-4px]",
-              "after:h-[2px] after:bg-primary after:transition-all after:duration-300",
+              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
               activeSection === "projects"
-                ? "text-primary after:w-full"
-                : "after:w-0 hover:after:w-full"
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
             )}
           >
             Projects
+            <span className={cn(
+              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
+              activeSection === "projects" ? "w-full" : "w-0 group-hover:w-full"
+            )}></span>
           </button>
           <button
             onClick={() => navigateToSection("skills")}
             className={cn(
-              "text-foreground hover:text-primary transition-colors relative",
-              "after:content-[''] after:absolute after:left-0 after:bottom-[-4px]",
-              "after:h-[2px] after:bg-primary after:transition-all after:duration-300",
+              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
               activeSection === "skills"
-                ? "text-primary after:w-full"
-                : "after:w-0 hover:after:w-full"
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
             )}
           >
             Skills
+            <span className={cn(
+              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
+              activeSection === "skills" ? "w-full" : "w-0 group-hover:w-full"
+            )}></span>
           </button>
           <button
             onClick={() => navigateToSection("blog")}
             className={cn(
-              "text-foreground hover:text-primary transition-colors relative",
-              "after:content-[''] after:absolute after:left-0 after:bottom-[-4px]",
-              "after:h-[2px] after:bg-primary after:transition-all after:duration-300",
+              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
               activeSection === "blog"
-                ? "text-primary after:w-full"
-                : "after:w-0 hover:after:w-full"
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
             )}
           >
             Blog
+            <span className={cn(
+              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
+              activeSection === "blog" ? "w-full" : "w-0 group-hover:w-full"
+            )}></span>
           </button>
           <button
             onClick={() => navigateToSection("contact")}
             className={cn(
-              "text-foreground hover:text-primary transition-colors relative",
-              "after:content-[''] after:absolute after:left-0 after:bottom-[-4px]",
-              "after:h-[2px] after:bg-primary after:transition-all after:duration-300",
+              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
               activeSection === "contact"
-                ? "text-primary after:w-full"
-                : "after:w-0 hover:after:w-full"
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
             )}
           >
             Contact
+            <span className={cn(
+              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
+              activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
+            )}></span>
           </button>
         </nav>
 
