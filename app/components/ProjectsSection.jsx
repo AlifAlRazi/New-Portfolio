@@ -12,43 +12,45 @@ import { Button } from "@/components/ui/button";
 function ProjectCard({ project, onClick, index }) {
   return (
     <motion.div 
-      className="group relative bg-card rounded-lg overflow-hidden border border-border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+      className="group relative cursor-pointer"
       onClick={() => onClick(project)}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
     >
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-          <p className="text-white font-medium">{project.shortDescription}</p>
+      <div className="constant-border-card h-full transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+        <div className="constant-border-inner bg-white dark:bg-slate-950 flex flex-col h-full transition-colors duration-500">
+          <div className="relative h-48 w-full overflow-hidden">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+              <p className="text-white text-sm font-medium leading-relaxed">{project.shortDescription}</p>
+            </div>
+          </div>
+          
+          <div className="p-5 flex-grow">
+            <h3 className="text-xl font-black mb-3 text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+              {project.title}
+            </h3>
+            
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech, index) => (
+                <span 
+                  key={index} 
+                  className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 transition-colors group-hover:border-blue-500/30 dark:group-hover:border-blue-400/30"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div className="p-4">
-        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-          {project.title}
-        </h3>
-        
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, index) => (
-            <span 
-              key={index} 
-              className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-      
     </motion.div>
   );
 }
@@ -60,21 +62,21 @@ function ProjectModal({ project, onClose }) {
   return (
     <AnimatePresence>
       <motion.div 
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
         <motion.div 
-          className="bg-card border border-border rounded-lg shadow-lg w-full max-w-3xl max-h-[90vh] overflow-y-auto"
+          className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
         >
-          <div className="relative h-64 w-full overflow-hidden">
+          <div className="relative h-72 w-full overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
@@ -83,26 +85,27 @@ function ProjectModal({ project, onClose }) {
             />
             <button 
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full bg-background/80 text-foreground hover:bg-background transition-colors"
+              className="absolute top-4 right-4 p-2.5 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100 hover:scale-110 transition-transform shadow-lg z-10"
               aria-label="Close modal"
             >
               <X size={20} />
             </button>
+            <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-950 via-transparent to-transparent"></div>
           </div>
           
-          <div className="p-6">
-            <div className="flex justify-between items-start mb-4">
-              <h2 className="text-2xl font-bold">{project.title}</h2>
-              <div className="flex gap-2">
+          <div className="p-8 -mt-10 relative z-10">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+              <h2 className="text-3xl font-black text-slate-900 dark:text-slate-100">{project.title}</h2>
+              <div className="flex gap-3">
                 {project.github && (
                   <Link 
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors"
-                    aria-label="GitHub repository"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors font-bold text-sm border border-slate-200 dark:border-slate-800"
                   >
-                    <Github size={20} />
+                    <Github size={18} />
+                    Code
                   </Link>
                 )}
                 {project.liveDemo && (
@@ -110,35 +113,38 @@ function ProjectModal({ project, onClose }) {
                     href={project.liveDemo} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors"
-                    aria-label="Live demo"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-teal-500 text-white hover:shadow-lg hover:shadow-blue-500/20 transition-all font-bold text-sm"
                   >
-                    <ExternalLink size={20} />
+                    <ExternalLink size={18} />
+                    Live Demo
                   </Link>
                 )}
               </div>
             </div>
             
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-8">
               {project.technologies.map((tech, index) => (
                 <span 
                   key={index} 
-                  className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary-foreground"
+                  className="text-xs font-bold px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
                 >
                   {tech}
                 </span>
               ))}
             </div>
             
-            <div className="space-y-4">
-              <p className="text-muted-foreground">{project.description}</p>
+            <div className="space-y-6">
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{project.description}</p>
               
               {project.features && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Key Features</h3>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                <div className="bg-slate-50 dark:bg-slate-900/40 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <h3 className="text-xl font-black mb-4 text-slate-900 dark:text-slate-100">Key Features</h3>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {project.features.map((feature, index) => (
-                      <li key={index}>{feature}</li>
+                      <li key={index} className="flex items-start gap-2 text-slate-600 dark:text-slate-400 font-medium">
+                        <ArrowRight size={16} className="mt-1 flex-shrink-0 text-blue-500" />
+                        <span>{feature}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -304,13 +310,13 @@ export default function ProjectsSection() {
     <section id="projects" className="py-20 px-4 flex flex-col items-center gap-10">
       <div className="container mx-auto">
         <motion.h2 
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-3xl md:text-4xl lg:text-5xl font-black mb-16 text-center text-slate-900 dark:text-slate-100"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
-          My <span className="text-primary">Projects</span>
+          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400">Projects</span>
         </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -330,10 +336,10 @@ export default function ProjectsSection() {
         
       </div>
       <Link href="/projects" >
-              <Button>
-                See More <ArrowRight size={16} className="ml-1" />
-              </Button>
-            </Link>
+        <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-6 px-8 rounded-xl shadow-lg shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">
+          See More <ArrowRight size={20} className="ml-2" />
+        </Button>
+      </Link>
     </section>
   );
 }

@@ -81,29 +81,31 @@ export default function ContactSection() {
     <section id="contact" className="py-20 px-4">
       <div className="container mx-auto">
         <motion.h2 
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-3xl md:text-4xl lg:text-5xl font-black mb-16 text-center text-slate-900 dark:text-slate-100"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
-          Get In <span className="text-primary">Touch</span>
+          Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400">Touch</span>
         </motion.h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div 
-            className="bg-card rounded-lg p-6 shadow-sm border border-border"
+            className="group"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Send Me a Message</h3>
+            <div className="constant-border-card h-full transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+              <div className="constant-border-inner bg-white dark:bg-slate-950 p-8 flex flex-col h-full transition-colors duration-500">
+                <h3 className="text-2xl font-black mb-8 text-slate-900 dark:text-slate-100">Send Me a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                <label htmlFor="name" className="block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
                   Name *
                 </label>
                 <input
@@ -115,13 +117,13 @@ export default function ContactSection() {
                   required
                   minLength="2"
                   maxLength="100"
-                  className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                  className="w-full px-5 py-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all font-medium placeholder:text-slate-400 dark:placeholder:text-slate-600"
                   placeholder="Your full name"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
                   Email *
                 </label>
                 <input
@@ -131,13 +133,13 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                  className="w-full px-5 py-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all font-medium placeholder:text-slate-400 dark:placeholder:text-slate-600"
                   placeholder="your.email@example.com"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                <label htmlFor="message" className="block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
                   Message *
                 </label>
                 <textarea
@@ -149,10 +151,10 @@ export default function ContactSection() {
                   minLength="10"
                   maxLength="1000"
                   rows={5}
-                  className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors resize-none"
+                  className="w-full px-5 py-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all font-medium placeholder:text-slate-400 dark:placeholder:text-slate-600 resize-none"
                   placeholder="Tell me about your project or just say hello!"
                 ></textarea>
-                <p className="text-xs text-muted-foreground mt-1">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-2 text-right">
                   {formData.message.length}/1000 characters
                 </p>
               </div>
@@ -160,11 +162,11 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed text-lg"
               >
                 {isSubmitting ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                  <span className="flex items-center justify-center gap-3">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
@@ -177,33 +179,27 @@ export default function ContactSection() {
               
               {formStatus.status && (
                 <motion.div 
-                  className={`mt-4 p-4 rounded-md ${
+                  className={`mt-6 p-4 rounded-xl font-bold flex items-center gap-3 border ${
                     formStatus.status === "success" 
-                      ? "bg-green-100 text-green-800 border border-green-200" 
-                      : "bg-red-100 text-red-800 border border-red-200"
+                      ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" 
+                      : "bg-rose-500/10 text-rose-600 border-rose-500/20"
                   }`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="flex items-start gap-2">
-                    <div className="flex-shrink-0 mt-0.5">
-                      {formStatus.status === "success" ? (
-                        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                      ) : (
-                        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                    </div>
-                    <p className="text-sm">{formStatus.message}</p>
-                  </div>
+                  {formStatus.status === "success" ? (
+                    <div className="bg-emerald-500 text-white p-1 rounded-full"><Code size={12} /></div>
+                  ) : (
+                    <div className="bg-rose-500 text-white p-1 rounded-full"><Code size={12} /></div>
+                  )}
+                  <p className="text-sm">{formStatus.message}</p>
                 </motion.div>
               )}
             </form>
-          </motion.div>
+          </div>
+        </div>
+      </motion.div>
             
           {/* Contact Info */}
           <motion.div 
@@ -213,25 +209,29 @@ export default function ContactSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-semibold">Let's Connect</h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100">Let's Connect</h3>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
               Feel free to reach out if you have any questions or want to work together. 
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col gap-4">
               <Link 
                 href="https://github.com/AlifAlRazi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-md hover:bg-card transition-colors border border-transparent hover:border-border group"
+                className="group relative"
               >
-                <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary/20 transition-colors">
-                  <Github className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium">GitHub</h4>
-                  <p className="text-sm text-muted-foreground">github.com/AlifAlRazi</p>
+                <div className="constant-border-card transition-all duration-300 group-hover:shadow-xl group-hover:shadow-slate-500/10">
+                  <div className="constant-border-inner bg-white dark:bg-slate-950 p-5 flex items-center gap-5 transition-colors duration-300">
+                    <div className="bg-slate-500/10 p-4 rounded-2xl group-hover:bg-slate-500/20 transition-colors">
+                      <Github className="text-slate-700 dark:text-slate-300" size={28} />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-slate-900 dark:text-slate-100">GitHub</h4>
+                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400">github.com/AlifAlRazi</p>
+                    </div>
+                  </div>
                 </div>
               </Link>
               
@@ -239,14 +239,18 @@ export default function ContactSection() {
                 href="https://linkedin.com/in/alifalrazi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-md hover:bg-card transition-colors border border-transparent hover:border-border group"
+                className="group relative"
               >
-                <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary/20 transition-colors">
-                  <Linkedin className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium">LinkedIn</h4>
-                  <p className="text-sm text-muted-foreground">linkedin.com/in/alifalrazi</p>
+                <div className="constant-border-card transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/10">
+                  <div className="constant-border-inner bg-white dark:bg-slate-950 p-5 flex items-center gap-5 transition-colors duration-300">
+                    <div className="bg-blue-500/10 p-4 rounded-2xl group-hover:bg-blue-500/20 transition-colors">
+                      <Linkedin className="text-blue-600 dark:text-blue-400" size={28} />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-slate-900 dark:text-slate-100">LinkedIn</h4>
+                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400">linkedin.com/in/alifalrazi</p>
+                    </div>
+                  </div>
                 </div>
               </Link>
               
@@ -254,21 +258,26 @@ export default function ContactSection() {
                 href="https://hackerrank.com/alifalrazi1" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-md hover:bg-card transition-colors border border-transparent hover:border-border group"
+                className="group relative"
               >
-                <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary/20 transition-colors">
-                  <Code className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium">HackerRank</h4>
-                  <p className="text-sm text-muted-foregreen">hackerrank.com/alifalrazi1</p>
+                <div className="constant-border-card transition-all duration-300 group-hover:shadow-xl group-hover:shadow-teal-500/10">
+                  <div className="constant-border-inner bg-white dark:bg-slate-950 p-5 flex items-center gap-5 transition-colors duration-300">
+                    <div className="bg-teal-500/10 p-4 rounded-2xl group-hover:bg-teal-500/20 transition-colors">
+                      <Code className="text-teal-600 dark:text-teal-400" size={28} />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-slate-900 dark:text-slate-100">HackerRank</h4>
+                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400">hackerrank.com/alifalrazi1</p>
+                    </div>
+                  </div>
                 </div>
               </Link>
             </div>
             
-            <div className="bg-muted/50 rounded-lg p-6 border border-border">
-              <h4 className="font-medium mb-2">Response Time</h4>
-              <p className="text-sm text-muted-foreground">
+            <div className="bg-slate-50 dark:bg-slate-900/40 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl rounded-full transition-all group-hover:bg-blue-500/10"></div>
+              <h4 className="font-black text-slate-900 dark:text-slate-100 mb-3 relative z-10">Response Time</h4>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed relative z-10">
                 I typically respond to messages within 24-48 hours. For urgent inquiries, 
                 feel free to connect with me on LinkedIn.
               </p>
