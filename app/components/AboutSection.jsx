@@ -1,6 +1,6 @@
 "use client";
 
-import { Download, MapPin, Mail, Phone, GraduationCap, Sparkles, ArrowRight } from "lucide-react";
+import { Download, MapPin, Mail, Phone, GraduationCap, Sparkles, ArrowRight, Rocket, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -37,8 +37,7 @@ export default function AboutSection() {
             About Me
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">
-            Get to Know{" "}
-            <span className="gradient-text">Me</span>
+            Get to Know <span className="gradient-text">Me</span>
           </h2>
         </motion.div>
 
@@ -64,10 +63,10 @@ export default function AboutSection() {
               </h3>
             </div>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Aspiring AI and software engineer with a strong foundation in computer science,
-              machine learning, and computer vision. Passionate about building innovative,
-              production-grade AI systems that drive real-world impact across tech, SaaS,
-              fintech, and digital transformation industries.
+              AI & software engineer and founder with a strong foundation in computer science,
+              machine learning, and computer vision. Founder @{" "}
+              <span className="text-violet-600 dark:text-violet-400 font-bold">ToggleIt AI</span>,
+              building innovative, production-grade AI systems that drive real-world impact across SaaS, tech, and digital transformation.
             </p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               Experienced in full-stack SaaS development, cloud infrastructure, and deploying
@@ -93,6 +92,35 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
+          {/* ToggleIt AI Company Card */}
+          <motion.div
+            className="glass-card p-6 flex flex-col justify-between group border-violet-500/30"
+            variants={itemVariants}
+          >
+            <div>
+              <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 inline-flex mb-4 shadow-lg shadow-violet-500/20">
+                <Rocket size={20} className="text-white" />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-1">
+                Company & Venture
+              </p>
+              <h4 className="text-2xl font-black text-slate-900 dark:text-white mb-2">
+                ToggleIt AI
+              </h4>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Building next-generation AI SaaS products, custom LLM agentic workflows, and automated enterprise AI systems.
+              </p>
+            </div>
+            <Link
+              href="https://www.toggleitai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-violet-600 dark:text-violet-400 hover:underline"
+            >
+              Visit toggleitai.com <ExternalLink size={12} />
+            </Link>
+          </motion.div>
+
           {/* Location Card */}
           <motion.div
             className="glass-card p-6 flex flex-col justify-between group"
@@ -110,7 +138,7 @@ export default function AboutSection() {
               </p>
             </div>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-3">
-              Open to remote & relocation
+              Open to remote & global collaboration
             </p>
           </motion.div>
 
@@ -186,29 +214,6 @@ export default function AboutSection() {
                 </span>
               </a>
             </div>
-          </motion.div>
-
-          {/* Resume Download Card */}
-          <motion.div
-            className="glass-card p-6 flex flex-col justify-between group"
-            variants={itemVariants}
-          >
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3">
-                Resume
-              </p>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                Download my latest CV with full details on experience, skills, and projects.
-              </p>
-            </div>
-            <Link
-              href="/resume/ALIF_AL_RAZI(CV).pdf"
-              target="_blank"
-              className="magnetic-btn inline-flex items-center justify-center gap-2 w-full bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-500 hover:to-blue-500 text-white px-5 py-3 rounded-xl font-semibold shadow-lg shadow-violet-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <Download size={18} />
-              Download CV
-            </Link>
           </motion.div>
         </motion.div>
       </div>

@@ -9,37 +9,75 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
   {
     id: 1,
-    title: "ED AI LMS",
-    subtitle: "Knowledge Graph Based Personalised Learning",
+    title: "ToggleIt AI",
+    subtitle: "AI Agency & Automation SaaS",
     shortDescription:
-      "AI-powered LMS using knowledge graphs and RAG to detect learning gaps and deliver personalised study paths.",
+      "AI SaaS & automation platform building custom LLM workflows, RAG agents, and intelligent software systems.",
     description:
-      "Built an AI-powered Learning Management System that uses knowledge graphs and RAG to detect individual learning gaps and deliver personalised study paths. Integrated Stripe for payments and Google Auth for user management.",
-    image: "/images/aiReader.png",
+      "Founded and engineered ToggleIt AI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
+    image: "/images/toggleit_real.png",
     technologies: [
       "Next.js",
+      "Python",
       "OpenAI API",
+      "LangChain",
       "RAG",
-      "Knowledge Graphs",
-      "Cloudinary",
-      "Google Auth",
-      "Stripe",
+      "Tailwind CSS",
+      "Vercel",
     ],
     github: null,
-    liveDemo: null,
+    liveDemo: "https://www.toggleitai.com/",
     features: [
-      "AI-powered learning gap detection via knowledge graphs",
-      "Personalised study path generation using RAG",
-      "Stripe payment integration",
-      "Google Auth for user management",
-      "Cloud-based content storage with Cloudinary",
+      "Custom LLM & Agentic AI workflows",
+      "Enterprise RAG pipeline integration",
+      "Intelligent web application development",
+      "SaaS product architecture",
     ],
     color: "from-violet-500 to-purple-500",
   },
   {
     id: 2,
+    title: "Alpine Global Consultancy",
+    subtitle: "HNW Relocation & Company Formation",
+    shortDescription:
+      "Full-stack marketing and relocation platform operating across Thailand, Malaysia, UAE, and China.",
+    description:
+      "Designed and developed a full-stack corporate website for Alpine Global Consultancy, a premier firm facilitating HNW relocation, residency, and company formation across Southeast Asia and the Middle East.",
+    image: "/images/alpine_global_real.png",
+    technologies: ["Next.js", "Tailwind CSS", "MongoDB", "Vercel"],
+    github: null,
+    liveDemo: "https://www.alpineglobalconsultancy.com/",
+    features: [
+      "Animated destination & residency showcases",
+      "Service breakdowns for Thailand, UAE, Malaysia & China",
+      "Client consultation booking flow",
+      "Modern dark glassmorphic design",
+    ],
+    color: "from-cyan-500 to-blue-500",
+  },
+  {
+    id: 3,
+    title: "Alpine Impex Trading",
+    subtitle: "Global Import & Export Platform",
+    shortDescription:
+      "International trade and supply chain platform showcasing global import-export products.",
+    description:
+      "Designed and developed the official digital web platform for Alpine Impex Trading, presenting international trading products, supply chain capabilities, and global trade inquiry portals.",
+    image: "/images/alpine_impex_real.png",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js"],
+    github: null,
+    liveDemo: "https://www.alpineimpextrading.com/",
+    features: [
+      "International import-export product catalog",
+      "Global trade inquiry booking portal",
+      "Responsive interactive trade showcase",
+    ],
+    color: "from-blue-500 to-indigo-500",
+  },
+  {
+    id: 4,
     title: "EmailYourProfessor.com",
-    subtitle: "AI Email SaaS Platform",
+    subtitle: "AI Email Outreach SaaS Platform",
     shortDescription:
       "SaaS platform generating personalised, AI-written emails for students reaching out to professors.",
     description:
@@ -53,13 +91,11 @@ const projects = [
       "University and professor discovery",
       "Compose, send, and schedule emails",
       "Dashboard with email analytics",
-      "Bulk email support",
-      "Free plan with limits and premium upgrade",
     ],
-    color: "from-cyan-500 to-blue-500",
+    color: "from-emerald-500 to-teal-500",
   },
   {
-    id: 3,
+    id: 5,
     title: "AI PDF Reading Tool",
     subtitle: "RAG-Powered Document Q&A",
     shortDescription:
@@ -82,34 +118,11 @@ const projects = [
       "AI-powered explanations for selected text",
       "Ask questions directly from PDF content",
       "Translate text into other languages",
-      "Saved previous chats and uploaded files",
-      "Free mode with limited prompts",
     ],
-    color: "from-blue-500 to-indigo-500",
+    color: "from-pink-500 to-rose-500",
   },
   {
-    id: 4,
-    title: "Smart Surplus",
-    subtitle: "Food Waste Reduction Platform",
-    shortDescription:
-      "Marketplace where businesses list near-expiry products at reduced prices to minimise food waste.",
-    description:
-      "Developed a marketplace platform where businesses can list near-expiry products at reduced prices to minimise food waste. Integrated AI-powered pricing suggestions, Google Auth, and Stripe for secure payments.",
-    image: "/images/textToImage.png",
-    technologies: ["Next.js", "OpenAI API", "Google Auth", "Stripe"],
-    github: null,
-    liveDemo: null,
-    features: [
-      "Near-expiry product marketplace",
-      "AI-powered pricing suggestions",
-      "Google authentication",
-      "Stripe payment integration",
-      "Business dashboard for inventory management",
-    ],
-    color: "from-emerald-500 to-teal-500",
-  },
-  {
-    id: 5,
+    id: 6,
     title: "AI T-Shirt Designer",
     subtitle: "Real-time AI Image Generation",
     shortDescription:
@@ -129,28 +142,6 @@ const projects = [
       "AI-generated t-shirt designs from text prompts",
       "Live t-shirt mockup preview",
       "One-click design generation",
-      "Gallery with design inspiration",
-      "Fast and responsive experience",
-    ],
-    color: "from-pink-500 to-rose-500",
-  },
-  {
-    id: 6,
-    title: "AI Image Generator",
-    subtitle: "Text to Image with Hugging Face",
-    shortDescription:
-      "Application using AI to generate images based on text prompts with ML technology.",
-    description:
-      "An application that uses AI to generate images based on text prompts, leveraging the latest in machine learning technology with Hugging Face models.",
-    image: "/images/textToImage.png",
-    technologies: ["Python", "Hugging Face", "React", "FastAPI"],
-    github: "https://github.com/AlifAlRazi/textToImage-backend",
-    liveDemo: null,
-    features: [
-      "Text-to-image generation",
-      "Style transfer capabilities",
-      "Image editing and enhancement",
-      "Gallery of generated images",
     ],
     color: "from-amber-500 to-orange-500",
   },
@@ -218,7 +209,7 @@ function ProjectCard({ project, onClick, index }) {
           {project.liveDemo && (
             <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-xs font-semibold text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Live
+              Live Site
             </div>
           )}
         </div>
@@ -331,7 +322,7 @@ function ProjectModal({ project, onClose }) {
                   className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 text-white hover:shadow-lg hover:shadow-violet-500/20 transition-all font-semibold text-sm"
                 >
                   <ExternalLink size={16} />
-                  Live Demo
+                  Visit Live Site
                 </Link>
               )}
             </div>
@@ -355,7 +346,7 @@ function ProjectModal({ project, onClose }) {
           {project.features && (
             <div className="glass-card p-6">
               <h3 className="text-lg font-bold mb-4 text-slate-900 dark:text-white">
-                Key Features
+                Key Features & Capabilities
               </h3>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {project.features.map((feature, i) => (
@@ -395,7 +386,7 @@ export default function ProjectsSection() {
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">
             Featured{" "}
-            <span className="gradient-text">Projects</span>
+            <span className="gradient-text">Projects & Ventures</span>
           </h2>
         </motion.div>
 

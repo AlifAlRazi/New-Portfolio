@@ -62,6 +62,7 @@ function FloatingParticles() {
 export default function HeroSection() {
   const [currentRole, setCurrentRole] = useState(0);
   const roles = [
+    "Founder @ ToggleIt AI",
     "AI Engineer",
     "Software Engineer",
     "Full-Stack Developer",
@@ -129,7 +130,7 @@ export default function HeroSection() {
             <motion.div variants={itemVariants} className="mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 text-sm font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Available for opportunities
+                Founder @ ToggleIt AI • Available for opportunities
               </span>
             </motion.div>
 

@@ -6,19 +6,37 @@ import Link from "next/link";
 
 const experiences = [
   {
+    role: "Founder & Lead AI Engineer",
+    type: "Founder / Venture",
+    company: "ToggleIt AI",
+    link: "https://www.toggleitai.com/",
+    period: "2024 – Present",
+    location: "Remote / Ireland",
+    description:
+      "Founded and engineered ToggleIt AI, an AI development and automation firm building custom LLM agentic workflows, RAG pipelines, and intelligent SaaS products.",
+    bullets: [
+      "Architected custom multi-agent LLM systems and RAG pipelines for client SaaS products and enterprise automation",
+      "Engineered full-stack Next.js and Python cloud applications with scalable architecture",
+      "Provided strategic AI engineering, system design, and production deployment across global clients",
+    ],
+    tech: ["Next.js", "Python", "OpenAI API", "LangChain", "RAG", "AWS", "Docker"],
+    color: "from-violet-500 to-purple-500",
+  },
+  {
     role: "Full-Stack Developer",
-    type: "Freelance",
+    type: "Client Project",
     company: "Alpine Global Consultancy",
+    link: "https://www.alpineglobalconsultancy.com/",
     period: "April 2026 – Present",
     location: "Remote",
     description:
-      "Designed and developed a full-stack marketing website for a premium HNW relocation and company formation firm operating across Thailand, Malaysia, UAE, and China.",
+      "Designed and developed a full-stack corporate website for a premium HNW relocation and company formation firm operating across Thailand, Malaysia, UAE, and China.",
     bullets: [
       "Built a modern, responsive landing page featuring animated destination showcases, service breakdowns, client testimonials, and a consultation booking flow",
-      "Deployed on Vercel for initial testing",
+      "Deployed on Vercel with high-performance optimization",
     ],
     tech: ["Next.js", "Tailwind CSS", "MongoDB", "Vercel"],
-    color: "from-violet-500 to-purple-500",
+    color: "from-cyan-500 to-blue-500",
   },
   {
     role: "Software Engineer",
@@ -35,7 +53,7 @@ const experiences = [
       "Ensured high performance and scalability through robust system design and code review practices",
     ],
     tech: ["React", "Next.js", "Node.js", "LangChain", "AWS", "Docker"],
-    color: "from-cyan-500 to-blue-500",
+    color: "from-blue-500 to-indigo-500",
   },
   {
     role: "Software Engineer",
@@ -51,7 +69,7 @@ const experiences = [
       "Designed, developed, and maintained multiple SaaS products using React.js, Node.js, and MongoDB",
     ],
     tech: ["React.js", "Node.js", "MongoDB", "AI/ML", "Chrome Extension"],
-    color: "from-blue-500 to-indigo-500",
+    color: "from-emerald-500 to-teal-500",
   },
   {
     role: "Full-Stack Developer",
@@ -67,21 +85,6 @@ const experiences = [
       "Implemented user authentication, property search filters, and responsive UI",
     ],
     tech: ["React.js", "Express.js", "MongoDB", "AWS S3", "EC2"],
-    color: "from-emerald-500 to-teal-500",
-  },
-  {
-    role: "Community Moderator",
-    type: "Part-time",
-    company: "Ecosapiens.xyz",
-    period: "Feb 2024 – Mar 2024",
-    location: "Remote",
-    description:
-      "Promoted constructive community engagement and upheld platform content standards.",
-    bullets: [
-      "Assisted users with queries and strategised for community growth",
-      "Managed unsuitable content and maintained platform quality",
-    ],
-    tech: ["Community Management", "Content Strategy"],
     color: "from-amber-500 to-orange-500",
   },
 ];
@@ -102,8 +105,7 @@ export default function ExperienceSection() {
             Career
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">
-            Work{" "}
-            <span className="gradient-text">Experience</span>
+            Work & <span className="gradient-text">Ventures</span>
           </h2>
         </motion.div>
 
@@ -158,9 +160,20 @@ export default function ExperienceSection() {
                           <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                             {exp.role}
                           </h3>
-                          <p className="text-violet-600 dark:text-violet-400 font-semibold">
-                            {exp.company}
-                          </p>
+                          {exp.link ? (
+                            <Link
+                              href={exp.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-violet-600 dark:text-violet-400 font-semibold hover:underline inline-flex items-center gap-1"
+                            >
+                              {exp.company} <ExternalLink size={12} />
+                            </Link>
+                          ) : (
+                            <p className="text-violet-600 dark:text-violet-400 font-semibold">
+                              {exp.company}
+                            </p>
+                          )}
                         </div>
                         <div className="flex flex-col items-end gap-1 text-right">
                           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">

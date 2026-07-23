@@ -9,6 +9,42 @@ import { motion } from "framer-motion";
 const allProjects = [
   {
     id: 1,
+    title: "ToggleIt AI",
+    subtitle: "AI Agency & Automation SaaS Platform",
+    category: "AI/ML",
+    description:
+      "Founded and engineered ToggleIt AI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
+    image: "/images/toggleit_real.png",
+    technologies: ["Next.js", "Python", "OpenAI API", "LangChain", "RAG", "Vercel"],
+    github: null,
+    liveDemo: "https://www.toggleitai.com/",
+  },
+  {
+    id: 2,
+    title: "Alpine Global Consultancy",
+    subtitle: "HNW Relocation & Company Formation",
+    category: "Web",
+    description:
+      "Designed and developed a full-stack corporate website for Alpine Global Consultancy operating across Thailand, Malaysia, UAE, and China. Features animated destination showcases, service breakdowns, and consultation booking.",
+    image: "/images/alpine_global_real.png",
+    technologies: ["Next.js", "Tailwind CSS", "MongoDB", "Vercel"],
+    github: null,
+    liveDemo: "https://www.alpineglobalconsultancy.com/",
+  },
+  {
+    id: 3,
+    title: "Alpine Impex Trading",
+    subtitle: "Global Import & Export Platform",
+    category: "Web",
+    description:
+      "Official web platform for Alpine Impex Trading, presenting international trading products, supply chain capabilities, and global trade inquiry portals.",
+    image: "/images/alpine_impex_real.png",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js"],
+    github: null,
+    liveDemo: "https://www.alpineimpextrading.com/",
+  },
+  {
+    id: 4,
     title: "ED AI LMS",
     subtitle: "Knowledge Graph Based Personalised Learning",
     category: "AI/ML",
@@ -20,7 +56,7 @@ const allProjects = [
     liveDemo: null,
   },
   {
-    id: 2,
+    id: 5,
     title: "EmailYourProfessor.com",
     subtitle: "AI Academic Outreach SaaS",
     category: "SaaS",
@@ -32,7 +68,7 @@ const allProjects = [
     liveDemo: "https://emailyourprofessor.com",
   },
   {
-    id: 3,
+    id: 6,
     title: "AI-Powered PDF Reading Tool",
     subtitle: "RAG Document Intelligence Platform",
     category: "AI/ML",
@@ -44,19 +80,7 @@ const allProjects = [
     liveDemo: "https://ai-reader-blue.vercel.app/",
   },
   {
-    id: 4,
-    title: "Alpine Global Consultancy",
-    subtitle: "HNW Relocation Platform",
-    category: "Web",
-    description:
-      "Full-stack marketing website for a premium HNW relocation and company formation firm operating across Thailand, Malaysia, UAE, and China. Modern landing page with destination showcases and consultation booking.",
-    image: "/images/textToImage.png",
-    technologies: ["Next.js", "Tailwind CSS", "MongoDB", "Vercel"],
-    github: null,
-    liveDemo: null,
-  },
-  {
-    id: 5,
+    id: 7,
     title: "Smart Surplus",
     subtitle: "Food Waste Reduction Marketplace",
     category: "Web",
@@ -68,7 +92,7 @@ const allProjects = [
     liveDemo: null,
   },
   {
-    id: 6,
+    id: 8,
     title: "AI T-Shirt Designer",
     subtitle: "Real-time Generative Design Tool",
     category: "SaaS",
@@ -80,7 +104,7 @@ const allProjects = [
     liveDemo: "https://ai-t-shirt-pi.vercel.app/design",
   },
   {
-    id: 7,
+    id: 9,
     title: "AI Image Generator",
     subtitle: "Text-to-Image Generation Backend",
     category: "AI/ML",
@@ -92,7 +116,7 @@ const allProjects = [
     liveDemo: "https://www.alifalrazi.com/projects/projectslist/textToImage",
   },
   {
-    id: 8,
+    id: 10,
     title: "Basearch.xyz Real Estate Platform",
     subtitle: "Property Listings & Authentication",
     category: "Web",
@@ -144,7 +168,7 @@ export default function ProjectsPage() {
             Projects <span className="gradient-text">Archive</span>
           </h1>
           <p className="text-slate-500 dark:text-slate-400 mt-3 max-w-xl">
-            A comprehensive list of projects I&apos;ve built across AI/ML engineering, full-stack SaaS, and client web applications.
+            A comprehensive list of projects & companies I&apos;ve engineered across AI/ML systems, full-stack SaaS, and client web applications.
           </p>
         </div>
 
