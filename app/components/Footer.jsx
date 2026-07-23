@@ -109,7 +109,6 @@ export default function Footer() {
               />
               <span>ToggleITAI</span>
             </Link>
-            <span>using Next.js & Framer Motion</span>
           </p>
         </div>
       </div>
