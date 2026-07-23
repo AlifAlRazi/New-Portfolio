@@ -182,22 +182,36 @@ export default function AboutSection() {
 
           {/* Education Card */}
           <motion.div
-            className="glass-card p-6 group"
+            className="glass-card overflow-hidden flex flex-col justify-between group"
             variants={itemVariants}
           >
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 inline-flex mb-4 shadow-lg shadow-blue-500/20">
-              <GraduationCap size={20} className="text-white" />
+            {/* TU Dublin Header Photo */}
+            <div className="relative h-28 w-full overflow-hidden">
+              <Image
+                src="/images/TUD.jpg"
+                alt="TU Dublin"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0926] via-[#0d0926]/40 to-transparent" />
+              <div className="absolute top-3 left-3">
+                <div className="p-2 rounded-xl bg-blue-600/90 backdrop-blur-md text-white shadow-lg">
+                  <GraduationCap size={18} />
+                </div>
+              </div>
             </div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3">
-              Education
-            </p>
-            <div className="space-y-3">
+
+            <div className="p-6 pt-3 space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                Education
+              </p>
+
               <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20">
+                <div className="relative w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20 shadow-sm">
                   <Image src="/images/TUD.jpg" alt="TU Dublin" fill className="object-cover" />
                 </div>
                 <div>
-                  <p className="font-bold text-slate-900 dark:text-white text-sm">
+                  <p className="font-bold text-white text-sm">
                     MSc in Computing — AI
                   </p>
                   <p className="text-xs text-slate-400">
@@ -208,13 +222,15 @@ export default function AboutSection() {
                   </p>
                 </div>
               </div>
+
               <div className="h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
+
               <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20">
+                <div className="relative w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20 shadow-sm">
                   <Image src="/images/NSU.jpg" alt="North South University" fill className="object-cover" />
                 </div>
                 <div>
-                  <p className="font-bold text-slate-900 dark:text-white text-sm">
+                  <p className="font-bold text-white text-sm">
                     BSc in CSE
                   </p>
                   <p className="text-xs text-slate-400">
