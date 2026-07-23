@@ -261,10 +261,9 @@ export default function HeroSection() {
               <div className="profile-ring" />
 
               {/* Main Avatar Frame */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-violet-500/40 bg-slate-900 shadow-2xl shadow-violet-600/40 z-10">
-                {/* Under-Shoulder Glowing Ambient Atmosphere */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#8b5cf6_0%,#06b6d4_40%,transparent_75%)] opacity-80 z-0" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-t from-violet-500/90 via-cyan-500/50 to-transparent blur-xl z-0 animate-pulse" />
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-700/60 bg-[#16171b] shadow-2xl shadow-violet-950/50 z-10">
+                {/* Professional Studio Headshot Spotlight Backdrop */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#4a4c54_0%,_#282a30_50%,_#141518_95%)] z-0" />
 
                 <Image
                   src="/images/alif.png"
@@ -274,8 +273,8 @@ export default function HeroSection() {
                   priority
                 />
 
-                {/* Upward Shoulder Glow Highlight */}
-                <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-violet-600/60 via-cyan-400/30 to-transparent mix-blend-screen pointer-events-none z-20" />
+                {/* Soft studio edge shadow */}
+                <div className="absolute inset-0 rounded-full shadow-[inset_0_0_25px_rgba(0,0,0,0.5)] pointer-events-none z-20" />
               </div>
 
               {/* Floating Pill Badges around Image */}
