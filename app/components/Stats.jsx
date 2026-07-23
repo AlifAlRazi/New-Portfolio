@@ -5,49 +5,94 @@ import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { Briefcase, FolderGit2, Cpu, GitCommitHorizontal } from "lucide-react";
 
-const stats = [
-  {
-    num: 3,
-    suffix: "+",
-    text: "Years of Experience",
-    icon: Briefcase,
-    color: "from-violet-500 to-purple-500",
-  },
-  {
-    num: 10,
-    suffix: "+",
-    text: "Projects Completed",
-    icon: FolderGit2,
-    color: "from-cyan-500 to-blue-500",
-  },
-  {
-    num: 15,
-    suffix: "+",
-    text: "Technologies Mastered",
-    icon: Cpu,
-    color: "from-blue-500 to-indigo-500",
-  },
-  {
-    num: 500,
-    suffix: "+",
-    text: "Code Commits",
-    icon: GitCommitHorizontal,
-    color: "from-emerald-500 to-teal-500",
-  },
-];
-
 export default function Stats() {
   const [mounted, setMounted] = useState(false);
+  const [gitStats, setGitStats] = useState({
+    totalCommits: 936,
+    publicRepos: 24,
+    yearsExp: 3,
+    techCount: 15,
+  });
 
   useEffect(() => {
     setMounted(true);
+
+    // Fetch live GitHub stats for AlifAlRazi
+    async function fetchLiveGitStats() {
+      try {
+        const [userRes, contribRes] = await Promise.all([
+          fetch("https://api.github.com/users/AlifAlRazi"),
+          fetch("https://github-contributions.vercel.app/api/v1/AlifAlRazi"),
+        ]);
+
+        let repos = 24;
+        let commits = 936;
+
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          if (userData.public_repos) {
+            repos = userData.public_repos;
+          }
+        }
+
+        if (contribRes.ok) {
+          const contribData = await contribRes.json();
+          if (contribData.years && contribData.years.length > 0) {
+            const total = contribData.years.reduce((acc, curr) => acc + curr.total, 0);
+            if (total > 0) commits = total;
+          }
+        }
+
+        setGitStats({
+          totalCommits: commits,
+          publicRepos: repos,
+          yearsExp: 3,
+          techCount: 15,
+        });
+      } catch (err) {
+        console.error("Failed to fetch live GitHub stats:", err);
+      }
+    }
+
+    fetchLiveGitStats();
   }, []);
+
+  const statsList = [
+    {
+      num: gitStats.totalCommits,
+      suffix: "+",
+      text: "GitHub Contributions",
+      icon: GitCommitHorizontal,
+      color: "from-emerald-500 to-teal-500",
+    },
+    {
+      num: gitStats.publicRepos,
+      suffix: "+",
+      text: "Public Repos & Projects",
+      icon: FolderGit2,
+      color: "from-violet-500 to-purple-500",
+    },
+    {
+      num: gitStats.techCount,
+      suffix: "+",
+      text: "Technologies & Frameworks",
+      icon: Cpu,
+      color: "from-cyan-500 to-blue-500",
+    },
+    {
+      num: gitStats.yearsExp,
+      suffix: "+",
+      text: "Years of Experience",
+      icon: Briefcase,
+      color: "from-blue-500 to-indigo-500",
+    },
+  ];
 
   return (
     <section className="py-16 relative z-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {stats.map((item, index) => {
+          {statsList.map((item, index) => {
             const Icon = item.icon;
             return (
               <motion.div
@@ -71,8 +116,8 @@ export default function Stats() {
                   {mounted ? (
                     <CountUp
                       end={item.num}
-                      duration={3}
-                      delay={0.2}
+                      duration={2.5}
+                      delay={0.1}
                       className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white"
                     />
                   ) : (
