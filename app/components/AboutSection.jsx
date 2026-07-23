@@ -122,35 +122,40 @@ export default function AboutSection() {
             </Link>
           </motion.div>
 
-          {/* Location Card */}
+          {/* Location Card — Full Background Picture */}
           <motion.div
-            className="glass-card overflow-hidden flex flex-col justify-between group"
+            className="glass-card overflow-hidden flex flex-col justify-between group relative p-6 min-h-[220px]"
             variants={itemVariants}
           >
-            {/* Galway Image Header */}
-            <div className="relative h-36 w-full overflow-hidden">
-              <Image
-                src="/images/Galway.jpg"
-                alt="Galway, Ireland"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0926] via-[#0d0926]/40 to-transparent" />
-              <div className="absolute top-3 left-3">
-                <div className="p-2 rounded-xl bg-emerald-500/80 backdrop-blur-md text-white shadow-lg">
-                  <MapPin size={18} />
-                </div>
+            {/* Full Card Background Image */}
+            <Image
+              src="/images/Galway.jpg"
+              alt="Galway, Ireland"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700 z-0"
+            />
+            {/* Full Dark Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-950/30 z-10" />
+
+            {/* Top Pin & Badge */}
+            <div className="relative z-20 flex justify-between items-start">
+              <div className="p-2.5 rounded-xl bg-emerald-500/80 backdrop-blur-md text-white shadow-lg shadow-emerald-500/20">
+                <MapPin size={20} />
               </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md text-emerald-300 border border-emerald-500/30">
+                Current Location
+              </span>
             </div>
 
-            <div className="p-6 pt-2">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">
+            {/* Bottom Text Details */}
+            <div className="relative z-20 mt-8">
+              <p className="text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-0.5">
                 Based in
               </p>
-              <p className="text-2xl font-black text-white">
+              <h4 className="text-2xl font-black text-white drop-shadow-md">
                 Galway, Ireland
-              </p>
-              <p className="text-xs font-medium text-slate-400 mt-2">
+              </h4>
+              <p className="text-xs font-medium text-slate-300 mt-1">
                 Open to remote & global collaboration
               </p>
             </div>
