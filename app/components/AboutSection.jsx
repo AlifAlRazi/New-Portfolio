@@ -180,63 +180,64 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Education Card */}
+          {/* Education Card — Full Background Photo */}
           <motion.div
-            className="glass-card overflow-hidden flex flex-col justify-between group"
+            className="glass-card overflow-hidden flex flex-col justify-between group relative p-6 min-h-[240px]"
             variants={itemVariants}
           >
-            {/* TU Dublin Header Photo */}
-            <div className="relative h-28 w-full overflow-hidden">
-              <Image
-                src="/images/TUD.jpg"
-                alt="TU Dublin"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0926] via-[#0d0926]/40 to-transparent" />
-              <div className="absolute top-3 left-3">
-                <div className="p-2 rounded-xl bg-blue-600/90 backdrop-blur-md text-white shadow-lg">
-                  <GraduationCap size={18} />
-                </div>
+            {/* Full Card Background Image */}
+            <Image
+              src="/images/TUD.jpg"
+              alt="TU Dublin"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700 z-0"
+            />
+            {/* Dark Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/80 to-slate-950/45 z-10" />
+
+            {/* Top Badge */}
+            <div className="relative z-20 flex justify-between items-start">
+              <div className="p-2.5 rounded-xl bg-blue-600/90 backdrop-blur-md text-white shadow-lg shadow-blue-500/20">
+                <GraduationCap size={20} />
               </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md text-blue-300 border border-blue-500/30">
+                Education
+              </span>
             </div>
 
-            <div className="p-6 pt-3 space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-                Education
-              </p>
-
+            {/* Bottom Content Details */}
+            <div className="relative z-20 mt-6 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="relative w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20 shadow-sm">
+                <div className="relative w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 border border-white/20 shadow-md">
                   <Image src="/images/TUD.jpg" alt="TU Dublin" fill className="object-cover" />
                 </div>
                 <div>
-                  <p className="font-bold text-white text-sm">
+                  <p className="font-bold text-white text-sm leading-tight">
                     MSc in Computing — AI
                   </p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-300">
                     Technological University Dublin
                   </p>
-                  <p className="text-[11px] text-violet-400 font-semibold">
+                  <p className="text-[11px] text-blue-400 font-semibold">
                     2025 – 2026
                   </p>
                 </div>
               </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
+              <div className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
               <div className="flex items-center gap-3">
-                <div className="relative w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20 shadow-sm">
+                <div className="relative w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 border border-white/20 shadow-md">
                   <Image src="/images/NSU.jpg" alt="North South University" fill className="object-cover" />
                 </div>
                 <div>
-                  <p className="font-bold text-white text-sm">
+                  <p className="font-bold text-white text-sm leading-tight">
                     BSc in CSE
                   </p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-300">
                     North South University
                   </p>
-                  <p className="text-[11px] text-violet-400 font-semibold">
+                  <p className="text-[11px] text-blue-400 font-semibold">
                     2020 – 2024 • CGPA: 3.51
                   </p>
                 </div>
