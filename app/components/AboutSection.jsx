@@ -173,14 +173,16 @@ export default function AboutSection() {
                 </span>
               </a>
               <a
-                href="tel:+353894620802"
+                href="https://wa.me/353894620802"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
               >
-                <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 group-hover/item:bg-cyan-500/20 transition-colors">
-                  <Phone size={16} className="text-cyan-600 dark:text-cyan-400" />
+                <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover/item:bg-emerald-500/20 transition-colors">
+                  <Phone size={16} className="text-emerald-600 dark:text-emerald-400" />
                 </div>
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover/item:text-cyan-600 dark:group-hover/item:text-cyan-400 transition-colors">
-                  +353 894 620 802
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover/item:text-emerald-600 dark:group-hover/item:text-emerald-400 transition-colors">
+                  WhatsApp: +353 894 620 802
                 </span>
               </a>
             </div>

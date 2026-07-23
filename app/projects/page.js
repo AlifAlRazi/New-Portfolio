@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ExternalLink, Github, Search, Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ExternalLink, Github, Search } from "lucide-react";
+import { motion } from "framer-motion";
 
 const allProjects = [
   {
@@ -18,12 +18,6 @@ const allProjects = [
     technologies: ["Next.js", "OpenAI API", "RAG", "Knowledge Graphs", "Cloudinary", "Stripe"],
     github: null,
     liveDemo: null,
-    features: [
-      "AI-powered learning gap detection",
-      "Personalised study path generation",
-      "Stripe payment integration",
-      "Google Auth",
-    ],
   },
   {
     id: 2,
@@ -36,12 +30,6 @@ const allProjects = [
     technologies: ["Next.js", "Express.js", "MongoDB", "OpenAI API", "Node.js"],
     github: null,
     liveDemo: "https://emailyourprofessor.com",
-    features: [
-      "Professor bio-aware email personalization",
-      "University discovery & professor lookup",
-      "Email scheduling and analytics dashboard",
-      "Bulk email support",
-    ],
   },
   {
     id: 3,
@@ -54,12 +42,6 @@ const allProjects = [
     technologies: ["Next.js", "OpenAI API", "RAG", "LangChain", "Cloudinary", "Google Auth"],
     github: null,
     liveDemo: "https://ai-reader-blue.vercel.app/",
-    features: [
-      "Upload and read PDFs online",
-      "AI explanations for selected text",
-      "Context-aware Q&A directly from PDF",
-      "Language translation & saved history",
-    ],
   },
   {
     id: 4,
@@ -72,12 +54,6 @@ const allProjects = [
     technologies: ["Next.js", "Tailwind CSS", "MongoDB", "Vercel"],
     github: null,
     liveDemo: null,
-    features: [
-      "Animated destination showcases",
-      "Service breakdowns & client testimonials",
-      "Consultation booking flow",
-      "Deployed on Vercel",
-    ],
   },
   {
     id: 5,
@@ -90,11 +66,6 @@ const allProjects = [
     technologies: ["Next.js", "OpenAI API", "Google Auth", "Stripe"],
     github: null,
     liveDemo: null,
-    features: [
-      "Near-expiry product marketplace",
-      "AI-powered pricing suggestions",
-      "Stripe payment integration",
-    ],
   },
   {
     id: 6,
@@ -107,11 +78,6 @@ const allProjects = [
     technologies: ["Next.js", "Tailwind CSS", "OpenAI API", "DALL·E"],
     github: null,
     liveDemo: "https://ai-t-shirt-pi.vercel.app/design",
-    features: [
-      "AI-generated t-shirt designs from prompts",
-      "Live t-shirt mockup preview",
-      "Design inspiration gallery",
-    ],
   },
   {
     id: 7,
@@ -122,13 +88,8 @@ const allProjects = [
       "Application that uses AI to generate images based on text prompts, leveraging Hugging Face diffusion models and Python FastAPI backend.",
     image: "/images/textToImage.png",
     technologies: ["Python", "Hugging Face", "React", "FastAPI"],
-    github: "https://github.com/ALIF-AL-RAZI/textToImage-backend",
+    github: "https://github.com/AlifAlRazi/textToImage-backend",
     liveDemo: "https://www.alifalrazi.com/projects/projectslist/textToImage",
-    features: [
-      "Text-to-image generation",
-      "Style transfer capabilities",
-      "FastAPI backend architecture",
-    ],
   },
   {
     id: 8,
@@ -137,15 +98,10 @@ const allProjects = [
     category: "Web",
     description:
       "Real estate web platform facilitating property listings and transactions. Built RESTful APIs, integrated MongoDB for data persistence, and deployed on AWS S3 and EC2.",
-    image: "/images/project4.jpg",
+    image: "/images/project_basearch.png",
     technologies: ["React.js", "Express.js", "MongoDB", "AWS S3", "EC2"],
     github: null,
     liveDemo: null,
-    features: [
-      "Property search filters & search API",
-      "User authentication & session management",
-      "AWS S3 & EC2 deployment",
-    ],
   },
 ];
 
@@ -232,53 +188,65 @@ export default function ProjectsPage() {
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="glass-card p-6 flex flex-col justify-between group"
+              className="glass-card overflow-hidden flex flex-col justify-between group"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
             >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20">
-                    {project.category}
-                  </span>
-                  <div className="flex gap-2">
+                {/* Project Image Header */}
+                <div className="relative h-44 w-full overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-violet-500/80 text-white backdrop-blur-md shadow-md">
+                      {project.category}
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3 flex gap-2 z-10">
                     {project.github && (
                       <Link
                         href={project.github}
                         target="_blank"
-                        className="text-slate-400 hover:text-white transition-colors"
+                        className="p-1.5 rounded-lg bg-black/60 backdrop-blur-sm text-slate-300 hover:text-white transition-colors"
                       >
-                        <Github size={16} />
+                        <Github size={14} />
                       </Link>
                     )}
                     {project.liveDemo && (
                       <Link
                         href={project.liveDemo}
                         target="_blank"
-                        className="text-slate-400 hover:text-violet-400 transition-colors"
+                        className="p-1.5 rounded-lg bg-black/60 backdrop-blur-sm text-violet-400 hover:text-violet-300 transition-colors"
                       >
-                        <ExternalLink size={16} />
+                        <ExternalLink size={14} />
                       </Link>
                     )}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-3">
-                  {project.subtitle}
-                </p>
+                <div className="p-5">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-3">
+                    {project.subtitle}
+                  </p>
 
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
-                  {project.description}
-                </p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+                </div>
               </div>
 
-              <div>
+              <div className="px-5 pb-5">
                 {/* Tech tags */}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100 dark:border-white/5">
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100 dark:border-white/5">
                   {project.technologies.map((t, i) => (
                     <span
                       key={i}

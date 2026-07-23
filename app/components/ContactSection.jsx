@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   AlertCircle,
   ArrowUpRight,
+  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -75,8 +76,8 @@ export default function ContactSection() {
   const socialLinks = [
     {
       name: "GitHub",
-      href: "https://github.com/ALIF-AL-RAZI",
-      username: "github.com/ALIF-AL-RAZI",
+      href: "https://github.com/AlifAlRazi",
+      username: "github.com/AlifAlRazi",
       icon: Github,
       color: "hover:border-slate-400 dark:hover:border-slate-500",
       iconColor: "text-slate-700 dark:text-slate-300",
@@ -88,6 +89,14 @@ export default function ContactSection() {
       icon: Linkedin,
       color: "hover:border-blue-400 dark:hover:border-blue-500",
       iconColor: "text-blue-600 dark:text-blue-400",
+    },
+    {
+      name: "WhatsApp / Direct Call",
+      href: "https://wa.me/353894620802",
+      username: "+353 894 620 802",
+      icon: MessageCircle,
+      color: "hover:border-emerald-400 dark:hover:border-emerald-500",
+      iconColor: "text-emerald-600 dark:text-emerald-400",
     },
     {
       name: "Email",
@@ -340,7 +349,7 @@ export default function ContactSection() {
               </h4>
               <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed relative z-10">
                 I typically respond within 24-48 hours. For urgent inquiries,
-                connect with me on LinkedIn.
+                connect with me on WhatsApp or LinkedIn.
               </p>
             </motion.div>
 

@@ -144,7 +144,7 @@ const projects = [
       "An application that uses AI to generate images based on text prompts, leveraging the latest in machine learning technology with Hugging Face models.",
     image: "/images/textToImage.png",
     technologies: ["Python", "Hugging Face", "React", "FastAPI"],
-    github: "https://github.com/ALIF-AL-RAZI/textToImage-backend",
+    github: "https://github.com/AlifAlRazi/textToImage-backend",
     liveDemo: null,
     features: [
       "Text-to-image generation",

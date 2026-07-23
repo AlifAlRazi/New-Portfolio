@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { Calendar, Clock, ChevronRight, BookOpen } from "lucide-react";
+import Image from "next/image";
+import { Calendar, Clock, ChevronRight } from "lucide-react";
 
 export default function BlogList() {
   const [filter, setFilter] = useState("all");
@@ -17,6 +17,7 @@ export default function BlogList() {
       date: "July 10, 2024",
       readTime: "8 min read",
       category: "ai",
+      image: "/images/blog_rag_ai.png",
     },
     {
       id: 2,
@@ -26,6 +27,7 @@ export default function BlogList() {
       date: "June 25, 2024",
       readTime: "6 min read",
       category: "frontend",
+      image: "/images/blog_nextjs_saas.png",
     },
     {
       id: 3,
@@ -35,6 +37,7 @@ export default function BlogList() {
       date: "May 14, 2024",
       readTime: "10 min read",
       category: "ai",
+      image: "/images/blog_cnn_medical.png",
     },
     {
       id: 4,
@@ -44,6 +47,7 @@ export default function BlogList() {
       date: "April 18, 2024",
       readTime: "7 min read",
       category: "backend",
+      image: "/images/blog_docker_api.png",
     },
   ];
 
@@ -83,17 +87,31 @@ export default function BlogList() {
         {filteredPosts.map((post, index) => (
           <motion.div
             key={post.id}
-            className="glass-card p-6 flex flex-col justify-between group"
+            className="glass-card overflow-hidden flex flex-col justify-between group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
           >
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20">
+            {/* Image Header */}
+            <div className="relative h-48 w-full overflow-hidden">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+              <div className="absolute top-3 left-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-violet-500/80 text-white backdrop-blur-md shadow-md">
                   {post.category}
                 </span>
-                <div className="flex items-center gap-3 text-xs text-slate-400">
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
                   <span className="flex items-center gap-1">
                     <Calendar size={12} />
                     {post.date}
@@ -103,21 +121,21 @@ export default function BlogList() {
                     {post.readTime}
                   </span>
                 </div>
+
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors leading-snug">
+                  {post.title}
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                  {post.excerpt}
+                </p>
               </div>
 
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                {post.title}
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                {post.excerpt}
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-              <span className="text-xs font-semibold text-violet-600 dark:text-violet-400 flex items-center gap-1 group-hover:gap-2 transition-all">
-                Read Full Article
-                <ChevronRight size={14} />
-              </span>
+              <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+                <span className="text-xs font-semibold text-violet-600 dark:text-violet-400 flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Read Full Article
+                  <ChevronRight size={14} />
+                </span>
+              </div>
             </div>
           </motion.div>
         ))}

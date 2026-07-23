@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,6 +18,12 @@ export default function Footer() {
       icon: Linkedin,
       label: "LinkedIn",
       hoverColor: "hover:text-blue-600 dark:hover:text-blue-400",
+    },
+    {
+      href: "https://wa.me/353894620802",
+      icon: MessageCircle,
+      label: "WhatsApp",
+      hoverColor: "hover:text-emerald-500",
     },
     {
       href: "mailto:alifalrazi1@gmail.com",
