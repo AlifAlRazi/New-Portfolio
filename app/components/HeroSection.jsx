@@ -261,7 +261,7 @@ export default function HeroSection() {
               <div className="profile-ring" />
 
               {/* Main Avatar Frame */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 dark:border-white/10 shadow-2xl shadow-violet-500/30 z-10">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-violet-500/30 bg-black shadow-2xl shadow-violet-950/80 z-10">
                 <Image
                   src="/images/alif.png"
                   alt="Alif Al Razi — AI Engineer"
@@ -269,6 +269,8 @@ export default function HeroSection() {
                   className="object-cover scale-105 hover:scale-110 transition-transform duration-700"
                   priority
                 />
+                {/* Subtle dark vignette overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
               </div>
 
               {/* Floating Pill Badges around Image */}
