@@ -1,27 +1,37 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-import BlogList from './components/BlogList';
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import BlogList from "./components/BlogList";
 
 export const metadata = {
-  title: 'Blog - Alif Al Razi',
-  description: 'Read my latest thoughts, tutorials, and insights on software development, AI, and technology',
+  title: "Blog — Alif Al Razi",
+  description:
+    "Articles and insights on AI engineering, RAG pipelines, LLMs, Next.js full-stack SaaS development, and machine learning.",
 };
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
-        <Link 
-          href="/" 
-          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8 transition-colors"
+    <div className="min-h-screen pt-28 pb-20 px-4 relative">
+      <div className="container mx-auto max-w-5xl">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-500 mb-8 transition-colors"
         >
           <ArrowLeft size={16} />
-          Back to Home
+          Back to Portfolio
         </Link>
-        
-        <h1 className="text-4xl font-bold mb-12">My <span className="text-primary">Blog</span></h1>
-        
+
+        <div className="mb-12">
+          <span className="text-sm font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2 block">
+            Articles
+          </span>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white">
+            Engineering <span className="gradient-text">Blog</span>
+          </h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-3 max-w-xl">
+            My thoughts, tutorials, and insights on AI systems, RAG architecture, LLM agentic workflows, and full-stack development.
+          </p>
+        </div>
+
         <BlogList />
       </div>
     </div>

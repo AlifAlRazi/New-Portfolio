@@ -5,7 +5,19 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { Menu, X, Sun, Moon, Monitor } from "lucide-react";
+import { Menu, X, Sun, Moon, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const navLinks = [
+  { label: "About", id: "about" },
+  { label: "Experience", id: "experience" },
+  { label: "Projects", id: "projects" },
+  { label: "Skills", id: "skills" },
+  { label: "GitHub", id: "github" },
+  { label: "Research", id: "research" },
+  { label: "Blog", isPage: true, href: "/blog" },
+  { label: "Contact", id: "contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,20 +27,13 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Handle scroll effect for floating header and active section
   useEffect(() => {
     const handleScroll = () => {
-      // Floating header effect
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
 
-      // Active section detection (only on home page)
       if (pathname === "/") {
-        const sections = ["about", "projects", "skills", "research", "education", "blog", "contact"];
-        const currentSection = sections.find(section => {
+        const sections = navLinks.filter((l) => !l.isPage).map((l) => l.id);
+        const currentSection = sections.find((section) => {
           const element = document.getElementById(section);
           if (element) {
             const rect = element.getBoundingClientRect();
@@ -36,7 +41,6 @@ export default function Navbar() {
           }
           return false;
         });
-
         setActiveSection(currentSection || "");
       } else {
         setActiveSection("");
@@ -47,23 +51,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  // Navigate to home page and scroll to section
-  const navigateToSection = (sectionId) => {
+  const navigateToSection = (link) => {
     setIsOpen(false);
-    
+
+    if (link.isPage) {
+      router.push(link.href);
+      return;
+    }
+
     if (pathname === "/") {
-      // If already on home page, just scroll
-      const element = document.getElementById(sectionId);
+      const element = document.getElementById(link.id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // If on another page, navigate to home with hash
-      router.push(`/#${sectionId}`);
+      router.push(`/#${link.id}`);
     }
   };
 
-  // Handle scroll to section after navigation (for hash URLs)
   useEffect(() => {
     if (pathname === "/" && window.location.hash) {
       const sectionId = window.location.hash.substring(1);
@@ -76,179 +81,151 @@ export default function Navbar() {
     }
   }, [pathname]);
 
-  return (
-    <header
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
-        scrolled
-          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 py-2 shadow-sm"
-          : "bg-transparent py-4"
-      )}
-    >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="text-xl md:text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400">
-          ALIF AL RAZI
-        </Link>
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <button
-            onClick={() => navigateToSection("about")}
-            className={cn(
-              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
-              activeSection === "about"
-                ? "text-blue-600 dark:text-blue-400"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
-            )}
+  return (
+    <motion.header
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-500",
+        scrolled ? "py-3" : "py-5"
+      )}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="container mx-auto px-4">
+        <nav
+          className={cn(
+            "flex justify-between items-center px-6 py-3 rounded-2xl transition-all duration-500",
+            scrolled
+              ? "bg-white/70 dark:bg-[#0f0a28]/70 backdrop-blur-xl border border-slate-200/50 dark:border-violet-500/10 shadow-lg shadow-slate-200/20 dark:shadow-violet-500/5"
+              : "bg-transparent"
+          )}
+        >
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-xl font-black tracking-tight gradient-text hover:opacity-80 transition-opacity"
           >
-            About
-            <span className={cn(
-              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
-              activeSection === "about" ? "w-full" : "w-0 group-hover:w-full"
-            )}></span>
-          </button>
-          <button
-            onClick={() => navigateToSection("projects")}
-            className={cn(
-              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
-              activeSection === "projects"
-                ? "text-blue-600 dark:text-blue-400"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
-            )}
-          >
-            Projects
-            <span className={cn(
-              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
-              activeSection === "projects" ? "w-full" : "w-0 group-hover:w-full"
-            )}></span>
-          </button>
-          <button
-            onClick={() => navigateToSection("skills")}
-            className={cn(
-              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
-              activeSection === "skills"
-                ? "text-blue-600 dark:text-blue-400"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
-            )}
-          >
-            Skills
-            <span className={cn(
-              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
-              activeSection === "skills" ? "w-full" : "w-0 group-hover:w-full"
-            )}></span>
-          </button>
-          <button
-            onClick={() => navigateToSection("blog")}
-            className={cn(
-              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
-              activeSection === "blog"
-                ? "text-blue-600 dark:text-blue-400"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
-            )}
-          >
-            Blog
-            <span className={cn(
-              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
-              activeSection === "blog" ? "w-full" : "w-0 group-hover:w-full"
-            )}></span>
-          </button>
-          <button
-            onClick={() => navigateToSection("contact")}
-            className={cn(
-              "text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1",
-              activeSection === "contact"
-                ? "text-blue-600 dark:text-blue-400"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
-            )}
-          >
-            Contact
-            <span className={cn(
-              "absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300",
-              activeSection === "contact" ? "w-full" : "w-0 group-hover:w-full"
-            )}></span>
-          </button>
+            ALIF.
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => navigateToSection(link)}
+                className={cn(
+                  "relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-lg flex items-center gap-1",
+                  activeSection === link.id || (link.isPage && pathname === link.href)
+                    ? "text-violet-600 dark:text-violet-400 font-bold"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                )}
+              >
+                {link.label}
+                {link.isPage && <ExternalLink size={12} className="opacity-60" />}
+                {(activeSection === link.id || (link.isPage && pathname === link.href)) && (
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-4/5 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"
+                    layoutId="activeSection"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Right side: theme toggle + mobile menu */}
+          <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="relative p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-violet-500/10 hover:border-violet-500/30 transition-all duration-300 group"
+              aria-label="Toggle theme"
+            >
+              <AnimatePresence mode="wait">
+                {theme === "dark" ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: 90, scale: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Sun
+                      size={16}
+                      className="text-amber-500 group-hover:text-amber-400 transition-colors"
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, scale: 0 }}
+                    animate={{ rotate: 0, scale: 1 }}
+                    exit={{ rotate: -90, scale: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Moon
+                      size={16}
+                      className="text-violet-600 group-hover:text-violet-500 transition-colors"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-violet-500/10 text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
         </nav>
 
-        {/* Theme Toggle */}
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={() => setTheme("light")}
-            className={cn(
-              "p-2 rounded-md",
-              theme === "light" ? "bg-secondary/10 text-primary" : "text-foreground"
-            )}
-            aria-label="Light mode"
-          >
-            <Sun size={18} />
-          </button>
-          <button
-            onClick={() => setTheme("dark")}
-            className={cn(
-              "p-2 rounded-md",
-              theme === "dark" ? "bg-secondary/10 text-primary" : "text-foreground"
-            )}
-            aria-label="Dark mode"
-          >
-            <Moon size={18} />
-          </button>
-          <button
-            onClick={() => setTheme("system")}
-            className={cn(
-              "p-2 rounded-md",
-              theme === "system" ? "bg-secondary/10 text-primary" : "text-foreground"
-            )}
-            aria-label="System theme"
-          >
-            <Monitor size={18} />
-          </button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="md:hidden mt-2 p-4 rounded-2xl bg-white/80 dark:bg-[#0f0a28]/80 backdrop-blur-xl border border-slate-200/50 dark:border-violet-500/10 shadow-xl"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              <div className="flex flex-col gap-1">
+                {navLinks.map((link, index) => (
+                  <motion.button
+                    key={link.label}
+                    onClick={() => navigateToSection(link)}
+                    className={cn(
+                      "text-left px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center justify-between",
+                      activeSection === link.id || (link.isPage && pathname === link.href)
+                        ? "text-violet-600 dark:text-violet-400 bg-violet-500/10 font-bold"
+                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"
+                    )}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <span>{link.label}</span>
+                    {link.isPage && <ExternalLink size={14} className="opacity-60" />}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md shadow-md py-4 px-4 flex flex-col space-y-4 border-t border-border">
-          <button
-            onClick={() => navigateToSection("about")}
-            className="text-foreground hover:text-primary transition-colors py-2"
-          >
-            About
-          </button>
-          <button
-            onClick={() => navigateToSection("projects")}
-            className="text-foreground hover:text-primary transition-colors py-2"
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => navigateToSection("skills")}
-            className="text-foreground hover:text-primary transition-colors py-2"
-          >
-            Skills
-          </button>
-          <button
-            onClick={() => navigateToSection("blog")}
-            className="text-foreground hover:text-primary transition-colors py-2"
-          >
-            Blog
-          </button>
-          <button
-            onClick={() => navigateToSection("contact")}
-            className="text-foreground hover:text-primary transition-colors py-2"
-          >
-            Contact
-          </button>
-        </div>
-      )}
-    </header>
+    </motion.header>
   );
 }

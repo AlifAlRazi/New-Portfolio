@@ -1,48 +1,98 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const socialLinks = [
+    {
+      href: "https://github.com/AlifAlRazi",
+      icon: Github,
+      label: "GitHub",
+      hoverColor: "hover:text-slate-900 dark:hover:text-white",
+    },
+    {
+      href: "https://linkedin.com/in/alifalrazi",
+      icon: Linkedin,
+      label: "LinkedIn",
+      hoverColor: "hover:text-blue-600 dark:hover:text-blue-400",
+    },
+    {
+      href: "mailto:alifalrazi1@gmail.com",
+      icon: Mail,
+      label: "Email",
+      hoverColor: "hover:text-violet-600 dark:hover:text-violet-400",
+    },
+  ];
+
   return (
-    <footer className="w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-t border-slate-200/50 dark:border-slate-800/50 py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="relative py-12 px-4">
+      {/* Gradient divider */}
+      <div className="section-divider mb-12" />
+
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+          {/* Left: Logo + Copyright */}
           <div className="text-center md:text-left">
-            <p className="text-sm font-bold text-slate-500 dark:text-slate-400 tracking-wide">
-              © {currentYear} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400">Alif</span>. All rights reserved.
+            <Link
+              href="/"
+              className="text-xl font-black gradient-text mb-1 inline-block"
+            >
+              ALIF.
+            </Link>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              © {currentYear} Alif Al Razi. All rights reserved.
             </p>
           </div>
 
-          <div className="flex items-center space-x-6">
-            <Link
-              href="https://github.com/ALIF-AL-RAZI"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all hover:scale-110 active:scale-95"
-              aria-label="GitHub"
-            >
-              <Github size={22} strokeWidth={2.5} />
+          {/* Quick Page Links */}
+          <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-400">
+            <Link href="/" className="hover:text-violet-500 transition-colors">
+              Home
             </Link>
-            <Link
-              href="https://linkedin.com/in/alif-al-razi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:scale-110 active:scale-95"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={22} strokeWidth={2.5} />
+            <Link href="/about" className="hover:text-violet-500 transition-colors">
+              About
             </Link>
-            <Link
-              href="mailto:alifalrazi1@gmail.com"
-              className="text-slate-400 hover:text-rose-500 transition-all hover:scale-110 active:scale-95"
-              aria-label="Email"
-            >
-              <Mail size={22} strokeWidth={2.5} />
+            <Link href="/projects" className="hover:text-violet-500 transition-colors">
+              Projects Archive
+            </Link>
+            <Link href="/blog" className="hover:text-violet-500 transition-colors">
+              Blog
             </Link>
           </div>
+
+          {/* Right: Social Icons */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <Link
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-violet-500/10 text-slate-400 ${social.hoverColor} hover:border-violet-500/30 transition-all hover:scale-110 active:scale-95`}
+                  aria-label={social.label}
+                >
+                  <Icon size={18} />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Center: Built with */}
+        <div className="text-center pt-6 border-t border-slate-100 dark:border-white/5">
+          <p className="text-xs text-slate-400 dark:text-slate-500 inline-flex items-center gap-1.5">
+            Built with
+            <Heart
+              size={12}
+              className="text-rose-500 fill-rose-500 animate-pulse"
+            />
+            using Next.js & Framer Motion
+          </p>
         </div>
       </div>
     </footer>

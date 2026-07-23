@@ -1,53 +1,260 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { Github, ExternalLink, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
 
-// Project Card Component
+const projects = [
+  {
+    id: 1,
+    title: "ED AI LMS",
+    subtitle: "Knowledge Graph Based Personalised Learning",
+    shortDescription:
+      "AI-powered LMS using knowledge graphs and RAG to detect learning gaps and deliver personalised study paths.",
+    description:
+      "Built an AI-powered Learning Management System that uses knowledge graphs and RAG to detect individual learning gaps and deliver personalised study paths. Integrated Stripe for payments and Google Auth for user management.",
+    image: "/images/aiReader.png",
+    technologies: [
+      "Next.js",
+      "OpenAI API",
+      "RAG",
+      "Knowledge Graphs",
+      "Cloudinary",
+      "Google Auth",
+      "Stripe",
+    ],
+    github: null,
+    liveDemo: null,
+    features: [
+      "AI-powered learning gap detection via knowledge graphs",
+      "Personalised study path generation using RAG",
+      "Stripe payment integration",
+      "Google Auth for user management",
+      "Cloud-based content storage with Cloudinary",
+    ],
+    color: "from-violet-500 to-purple-500",
+  },
+  {
+    id: 2,
+    title: "EmailYourProfessor.com",
+    subtitle: "AI Email SaaS Platform",
+    shortDescription:
+      "SaaS platform generating personalised, AI-written emails for students reaching out to professors.",
+    description:
+      "Developed a SaaS platform that generates personalised, AI-written emails for students reaching out to professors, reducing writing time significantly. Built full-stack with Express.js backend and MongoDB.",
+    image: "/images/emailProfessor.png",
+    technologies: ["Next.js", "Express.js", "MongoDB", "OpenAI API"],
+    github: null,
+    liveDemo: "https://emailyourprofessor.com",
+    features: [
+      "AI-generated emails based on student and professor bios",
+      "University and professor discovery",
+      "Compose, send, and schedule emails",
+      "Dashboard with email analytics",
+      "Bulk email support",
+      "Free plan with limits and premium upgrade",
+    ],
+    color: "from-cyan-500 to-blue-500",
+  },
+  {
+    id: 3,
+    title: "AI PDF Reading Tool",
+    subtitle: "RAG-Powered Document Q&A",
+    shortDescription:
+      "AI-powered document Q&A platform enabling students to query PDFs with context-aware responses.",
+    description:
+      "Built an AI-powered document Q&A platform using RAG pipelines and OpenAI API, enabling students to extract and query information from PDFs with context-aware responses. Integrated Cloudinary for storage and Google Auth for secure access.",
+    image: "/images/aiReader.png",
+    technologies: [
+      "Next.js",
+      "OpenAI API",
+      "RAG",
+      "LangChain",
+      "Cloudinary",
+      "Google Auth",
+    ],
+    github: null,
+    liveDemo: "https://ai-reader-blue.vercel.app/",
+    features: [
+      "Upload and read PDFs online",
+      "AI-powered explanations for selected text",
+      "Ask questions directly from PDF content",
+      "Translate text into other languages",
+      "Saved previous chats and uploaded files",
+      "Free mode with limited prompts",
+    ],
+    color: "from-blue-500 to-indigo-500",
+  },
+  {
+    id: 4,
+    title: "Smart Surplus",
+    subtitle: "Food Waste Reduction Platform",
+    shortDescription:
+      "Marketplace where businesses list near-expiry products at reduced prices to minimise food waste.",
+    description:
+      "Developed a marketplace platform where businesses can list near-expiry products at reduced prices to minimise food waste. Integrated AI-powered pricing suggestions, Google Auth, and Stripe for secure payments.",
+    image: "/images/textToImage.png",
+    technologies: ["Next.js", "OpenAI API", "Google Auth", "Stripe"],
+    github: null,
+    liveDemo: null,
+    features: [
+      "Near-expiry product marketplace",
+      "AI-powered pricing suggestions",
+      "Google authentication",
+      "Stripe payment integration",
+      "Business dashboard for inventory management",
+    ],
+    color: "from-emerald-500 to-teal-500",
+  },
+  {
+    id: 5,
+    title: "AI T-Shirt Designer",
+    subtitle: "Real-time AI Image Generation",
+    shortDescription:
+      "Real-time AI image generation tool for designing custom t-shirts using text prompts.",
+    description:
+      "Created a real-time AI image generation tool allowing users to design custom t-shirts in seconds using text prompts. Integrated OpenAI image generation with a clean, responsive UI.",
+    image: "/images/aiTshirt.png",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "OpenAI API",
+      "AI Image Generation (DALL·E)",
+    ],
+    github: null,
+    liveDemo: "https://ai-t-shirt-pi.vercel.app/design",
+    features: [
+      "AI-generated t-shirt designs from text prompts",
+      "Live t-shirt mockup preview",
+      "One-click design generation",
+      "Gallery with design inspiration",
+      "Fast and responsive experience",
+    ],
+    color: "from-pink-500 to-rose-500",
+  },
+  {
+    id: 6,
+    title: "AI Image Generator",
+    subtitle: "Text to Image with Hugging Face",
+    shortDescription:
+      "Application using AI to generate images based on text prompts with ML technology.",
+    description:
+      "An application that uses AI to generate images based on text prompts, leveraging the latest in machine learning technology with Hugging Face models.",
+    image: "/images/textToImage.png",
+    technologies: ["Python", "Hugging Face", "React", "FastAPI"],
+    github: "https://github.com/ALIF-AL-RAZI/textToImage-backend",
+    liveDemo: null,
+    features: [
+      "Text-to-image generation",
+      "Style transfer capabilities",
+      "Image editing and enhancement",
+      "Gallery of generated images",
+    ],
+    color: "from-amber-500 to-orange-500",
+  },
+];
+
+// 3D Tilt Card Component
 function ProjectCard({ project, onClick, index }) {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 15;
+    const rotateY = (centerX - x) / 15;
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform =
+      "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+  };
+
   return (
-    <motion.div 
+    <motion.div
       className="group relative cursor-pointer"
       onClick={() => onClick(project)}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
-      <div className="constant-border-card h-full transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
-        <div className="constant-border-inner bg-white dark:bg-slate-950 flex flex-col h-full transition-colors duration-500">
-          <div className="relative h-48 w-full overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-              <p className="text-white text-sm font-medium leading-relaxed">{project.shortDescription}</p>
-            </div>
+      <div
+        ref={cardRef}
+        className="glass-card overflow-hidden transition-all duration-200 ease-out"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Image */}
+        <div className="relative h-48 w-full overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-0 group-hover:opacity-40 transition-opacity duration-500 mix-blend-multiply`}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+            <p className="text-white text-sm font-medium leading-relaxed">
+              {project.shortDescription}
+            </p>
           </div>
-          
-          <div className="p-5 flex-grow">
-            <h3 className="text-xl font-black mb-3 text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-              {project.title}
-            </h3>
-            
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech, index) => (
-                <span 
-                  key={index} 
-                  className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 transition-colors group-hover:border-blue-500/30 dark:group-hover:border-blue-400/30"
-                >
-                  {tech}
-                </span>
-              ))}
+          {/* Live badge */}
+          {project.liveDemo && (
+            <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-xs font-semibold text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Live
             </div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-1">
+            {project.subtitle}
+          </p>
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors duration-300">
+            {project.title}
+          </h3>
+
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {project.technologies.slice(0, 4).map((tech, i) => (
+              <span
+                key={i}
+                className="text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-violet-500/10"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 4 && (
+              <span className="text-[10px] font-semibold px-2 py-1 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20">
+                +{project.technologies.length - 4}
+              </span>
+            )}
+          </div>
+
+          {/* View Details */}
+          <div className="flex items-center gap-1 text-sm font-semibold text-violet-600 dark:text-violet-400 group-hover:gap-2 transition-all">
+            View Details
+            <ArrowRight
+              size={14}
+              className="group-hover:translate-x-1 transition-transform"
+            />
           </div>
         </div>
       </div>
@@ -58,288 +265,179 @@ function ProjectCard({ project, onClick, index }) {
 // Project Modal Component
 function ProjectModal({ project, onClose }) {
   if (!project) return null;
-  
+
   return (
-    <AnimatePresence>
-      <motion.div 
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-lg"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="glass-card w-full max-w-3xl max-h-[90vh] overflow-y-auto border-violet-500/20"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 40, scale: 0.95 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
       >
-        <motion.div 
-          className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto"
-          onClick={(e) => e.stopPropagation()}
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        >
-          <div className="relative h-72 w-full overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-            />
-            <button 
-              onClick={onClose}
-              className="absolute top-4 right-4 p-2.5 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100 hover:scale-110 transition-transform shadow-lg z-10"
-              aria-label="Close modal"
-            >
-              <X size={20} />
-            </button>
-            <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-950 via-transparent to-transparent"></div>
-          </div>
-          
-          <div className="p-8 -mt-10 relative z-10">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
-              <h2 className="text-3xl font-black text-slate-900 dark:text-slate-100">{project.title}</h2>
-              <div className="flex gap-3">
-                {project.github && (
-                  <Link 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors font-bold text-sm border border-slate-200 dark:border-slate-800"
-                  >
-                    <Github size={18} />
-                    Code
-                  </Link>
-                )}
-                {project.liveDemo && (
-                  <Link 
-                    href={project.liveDemo} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-teal-500 text-white hover:shadow-lg hover:shadow-blue-500/20 transition-all font-bold text-sm"
-                  >
-                    <ExternalLink size={18} />
-                    Live Demo
-                  </Link>
-                )}
-              </div>
+        {/* Image */}
+        <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+          />
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2.5 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-slate-900 dark:text-white hover:scale-110 transition-transform shadow-lg z-10"
+            aria-label="Close modal"
+          >
+            <X size={18} />
+          </button>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="p-8">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-1">
+                {project.subtitle}
+              </p>
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">
+                {project.title}
+              </h2>
             </div>
-            
-            <div className="flex flex-wrap gap-2 mb-8">
-              {project.technologies.map((tech, index) => (
-                <span 
-                  key={index} 
-                  className="text-xs font-bold px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+            <div className="flex gap-2">
+              {project.github && (
+                <Link
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-violet-500/10 text-slate-900 dark:text-white hover:border-violet-500/30 transition-colors font-semibold text-sm"
                 >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            
-            <div className="space-y-6">
-              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{project.description}</p>
-              
-              {project.features && (
-                <div className="bg-slate-50 dark:bg-slate-900/40 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-                  <h3 className="text-xl font-black mb-4 text-slate-900 dark:text-slate-100">Key Features</h3>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2 text-slate-600 dark:text-slate-400 font-medium">
-                        <ArrowRight size={16} className="mt-1 flex-shrink-0 text-blue-500" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <Github size={16} />
+                  Code
+                </Link>
+              )}
+              {project.liveDemo && (
+                <Link
+                  href={project.liveDemo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 text-white hover:shadow-lg hover:shadow-violet-500/20 transition-all font-semibold text-sm"
+                >
+                  <ExternalLink size={16} />
+                  Live Demo
+                </Link>
               )}
             </div>
           </div>
-        </motion.div>
+
+          {/* Tech stack */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.technologies.map((tech, i) => (
+              <span key={i} className="skill-tag text-xs py-1 px-2.5">
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Description */}
+          <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+            {project.description}
+          </p>
+
+          {/* Features */}
+          {project.features && (
+            <div className="glass-card p-6">
+              <h3 className="text-lg font-bold mb-4 text-slate-900 dark:text-white">
+                Key Features
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {project.features.map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400"
+                  >
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </motion.div>
-    </AnimatePresence>
+    </motion.div>
   );
 }
 
-// Main Projects Section Component
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
-  
-  // Handler functions
-  const handleOpenProject = (project) => {
-    setSelectedProject(project);
-  };
-  
-  const handleCloseProject = () => {
-    setSelectedProject(null);
-  };
-  
-  const projects = [
-{
-  id: 1,
-  title: "AI-Powered PDF Reading Tool",
-  shortDescription: "An AI-based tool to read, understand, and interact with PDFs",
-  description:
-    "A live AI-powered PDF reading tool that allows users to upload books or documents, read them online, and interact with the content using AI. Users can select text for explanations, ask questions directly from the PDF, translate passages, and access previous chats and files. The project is currently a working demo and not yet commercial.",
-  image: "/images/aiReader.png",
-  technologies: [
-    "Next.js",
-    "OpenAI API",
-    "RAG (Retrieval-Augmented Generation)",
-    "Cloudinary",
-    "Google Authentication"
-  ],
-  github: null,
-  liveDemo: "https://ai-reader-blue.vercel.app/",
-  features: [
-    "Google sign-in authentication",
-    "Upload and read PDFs or books online",
-    "AI-powered explanations for selected text",
-    "Ask questions directly from PDF content",
-    "Translate text into other languages",
-    "Saved previous chats and uploaded files",
-    "Free mode with limited prompts"
-  ]
-},
-
-    {
-  id: 2,
-  title: "Emailyourprofessor.com",
-  shortDescription: "AI-powered platform to help students write personalized emails to professors",
-  description:
-    "Emailyourprofessor.com is an AI-powered web application that helps students generate professional, personalized academic emails. The system uses student bio and professor bio to craft context-aware emails, supports finding universities and professors, manages sent and scheduled emails, and provides analytics through a modern dashboard.",
-  image: "/images/emailProfessor.png",
-  technologies: [
-    "Next.js",
-    "Express.js",
-    "MongoDB",
-    "OpenAI API"
-  ],
-  github: null,
-  liveDemo: "https://emailyourprofessor.com",
-  features: [
-    "AI-generated emails based on student bio and professor bio",
-    "Find universities and professors with detailed profiles",
-    "Professor bio–aware email personalization",
-    "Compose, send, and schedule emails",
-    "Dashboard with email analytics and activity overview",
-    "Track total, sent, and scheduled emails",
-    "Manage professor contacts",
-    "Bulk email support",
-    "Saved email history and previous interactions",
-    "Free plan with limits and premium upgrade option"
-  ]
-},
-
-{
-  id: 3,
-  title: "AI T-Shirt Designer",
-  shortDescription: "Create custom AI-generated t-shirt designs in seconds",
-  description:
-    "An AI-powered t-shirt design platform that allows users to create unique, print-ready designs by simply describing their idea. No design skills are required. Users can generate designs instantly, preview them on a t-shirt mockup, browse inspiration from a gallery, and start designing with a clean, modern interface.",
-  image: "/images/aiTshirt.png",
-  technologies: [
-    "Next.js",
-    "Tailwind CSS",
-    "OpenAI API",
-    "AI Image Generation"
-  ],
-  github: null,
-  liveDemo: "https://ai-t-shirt-pi.vercel.app/design",
-  features: [
-    "AI-generated t-shirt designs from text prompts",
-    "Live t-shirt mockup preview",
-    "One-click design generation",
-    "No design skills required",
-    "Gallery with design inspiration",
-    "Clean landing page with CTA-focused UI",
-    "Fast and responsive user experience"
-  ]
-},
-
-    {
-      id: 4, // Added missing id
-      title: "Portfolio Website",
-      shortDescription: "Showcase of my work and skills",
-      description: "A personal portfolio website built with Next.js and Tailwind CSS to showcase my projects, skills, and professional experience.",
-      image: "/images/project4.jpg",
-      technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Vercel"],
-      github: "https://github.com/yourusername/portfolio",
-      liveDemo: "https://yourusername.dev",
-      features: [
-        "Responsive design for all devices",
-        "Dark/light mode toggle",
-        "Project showcase with detailed views",
-        "Skills and experience sections",
-        "Contact form for inquiries"
-      ]
-    },
-    {
-      id: 5, // Added missing id
-      title: "AI Image Generator",
-      shortDescription: "Generate images with AI",
-      description: "An application that uses AI to generate images based on text prompts, leveraging the latest in machine learning technology.",
-      image: "/images/textToImage.png",
-      technologies: ["Python", "Hugging Face", "React", "FastAPI"],
-      github: "https://github.com/ALIF-AL-RAZI/textToImage-backend",
-      liveDemo: "https://www.alifalrazi.com/projects/projectslist/textToImage",
-      features: [
-        "Text-to-image generation",
-        "Style transfer capabilities",
-        "Image editing and enhancement",
-        "Gallery of generated images",
-        "User accounts to save favorites"
-      ]
-    },
-    {
-      id: 6, // Added missing id
-      title: "Fitness Tracker",
-      shortDescription: "Track your fitness journey",
-      description: "A fitness tracking application that helps users monitor their workouts, nutrition, and progress towards fitness goals.",
-      image: "/images/project6.jpg",
-      technologies: ["React Native", "Firebase", "HealthKit API", "Google Fit API"],
-      github: "https://github.com/yourusername/fitness-tracker",
-      liveDemo: "https://fitness-tracker-demo.example.com",
-      features: [
-        "Workout logging and tracking",
-        "Nutrition and calorie tracking",
-        "Progress visualization with charts",
-        "Goal setting and achievement tracking",
-        "Integration with health platforms"
-      ]
-    }
-  ];
 
   return (
-    <section id="projects" className="py-20 px-4 flex flex-col items-center gap-10">
-      <div className="container mx-auto">
-        <motion.h2 
-          className="text-3xl md:text-4xl lg:text-5xl font-black mb-16 text-center text-slate-900 dark:text-slate-100"
+    <section id="projects" className="py-24 px-4 relative">
+      <div className="container mx-auto max-w-6xl">
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
-          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-teal-400">Projects</span>
-        </motion.h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <span className="text-sm font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-3 block">
+            Portfolio
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">
+            Featured{" "}
+            <span className="gradient-text">Projects</span>
+          </h2>
+        </motion.div>
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              onClick={handleOpenProject}
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onClick={setSelectedProject}
               index={index}
             />
           ))}
         </div>
-        
-        {selectedProject && (
-          <ProjectModal project={selectedProject} onClose={handleCloseProject} />
-        )}
-        
+
+        {/* View All Projects Button */}
+        <motion.div
+          className="mt-14 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Link
+            href="/projects"
+            className="magnetic-btn inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg shadow-violet-500/20 transition-all hover:scale-105 active:scale-95"
+          >
+            View Full Projects Archive
+            <ArrowRight size={18} />
+          </Link>
+        </motion.div>
+
+        {/* Modal */}
+        <AnimatePresence>
+          {selectedProject && (
+            <ProjectModal
+              project={selectedProject}
+              onClose={() => setSelectedProject(null)}
+            />
+          )}
+        </AnimatePresence>
       </div>
-      <Link href="/projects" >
-        <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-6 px-8 rounded-xl shadow-lg shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">
-          See More <ArrowRight size={20} className="ml-2" />
-        </Button>
-      </Link>
     </section>
   );
 }
