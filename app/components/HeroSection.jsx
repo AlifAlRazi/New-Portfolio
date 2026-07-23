@@ -93,18 +93,21 @@ export default function HeroSection() {
       ref={heroRef}
       onMouseMove={handleMouseMove}
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-24 pb-12"
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-24 pb-12 bg-gradient-to-b from-violet-100/70 via-slate-50 to-slate-100/90 dark:from-[#0f0732] dark:via-[#09031d] dark:to-[#030014] transition-colors duration-500 border-b border-violet-500/10"
     >
+      {/* High-Tech Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(#7c3aed_1px,transparent_1px)] [background-size:28px_28px] opacity-10 dark:opacity-20 pointer-events-none" />
+
       <FloatingParticles />
 
       {/* Vibrant Background Glow Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/20 dark:bg-violet-600/30 rounded-full blur-[140px] animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/25 dark:bg-violet-600/35 rounded-full blur-[140px] animate-pulse" />
       <div
-        className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-cyan-500/20 dark:bg-cyan-500/25 rounded-full blur-[140px] animate-pulse"
+        className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-cyan-500/25 dark:bg-cyan-500/30 rounded-full blur-[140px] animate-pulse"
         style={{ animationDelay: "2s" }}
       />
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-blue-600/10 dark:bg-blue-600/15 rounded-full blur-[150px] animate-pulse"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-blue-600/15 dark:bg-blue-600/20 rounded-full blur-[150px] animate-pulse"
         style={{ animationDelay: "4s" }}
       />
 
