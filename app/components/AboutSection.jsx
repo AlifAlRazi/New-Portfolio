@@ -2,6 +2,7 @@
 
 import { Download, MapPin, Mail, Phone, GraduationCap, Sparkles, ArrowRight, Rocket, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -154,28 +155,38 @@ export default function AboutSection() {
               Education
             </p>
             <div className="space-y-3">
-              <div>
-                <p className="font-bold text-slate-900 dark:text-white text-sm">
-                  MSc in Computing — AI
-                </p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  Technological University Dublin
-                </p>
-                <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">
-                  2025 – 2026
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20">
+                  <Image src="/images/TUD.jpg" alt="TU Dublin" fill className="object-cover" />
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 dark:text-white text-sm">
+                    MSc in Computing — AI
+                  </p>
+                  <p className="text-xs text-slate-400">
+                    Technological University Dublin
+                  </p>
+                  <p className="text-[11px] text-violet-400 font-semibold">
+                    2025 – 2026
+                  </p>
+                </div>
               </div>
               <div className="h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
-              <div>
-                <p className="font-bold text-slate-900 dark:text-white text-sm">
-                  BSc in CSE
-                </p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  North South University
-                </p>
-                <p className="text-xs text-violet-600 dark:text-violet-400 font-semibold">
-                  2020 – 2024 • CGPA: 3.51/4.00
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20">
+                  <Image src="/images/NSU.jpg" alt="North South University" fill className="object-cover" />
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 dark:text-white text-sm">
+                    BSc in CSE
+                  </p>
+                  <p className="text-xs text-slate-400">
+                    North South University
+                  </p>
+                  <p className="text-[11px] text-violet-400 font-semibold">
+                    2020 – 2024 • CGPA: 3.51
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>
