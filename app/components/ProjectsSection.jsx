@@ -15,7 +15,7 @@ const projects = [
       "AI SaaS & automation platform building custom LLM workflows, RAG agents, and intelligent software systems.",
     description:
       "Founded and engineered ToggleITAI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
-    image: "/images/toggleit_real.png",
+    image: "/images/tia.gif",
     technologies: [
       "Next.js",
       "Python",

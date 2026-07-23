@@ -14,7 +14,7 @@ const allProjects = [
     category: "AI/ML",
     description:
       "Founded and engineered ToggleITAI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
-    image: "/images/toggleit_real.png",
+    image: "/images/tia.gif",
     technologies: ["Next.js", "Python", "OpenAI API", "LangChain", "RAG", "Vercel"],
     github: null,
     liveDemo: "https://www.toggleitai.com/",
