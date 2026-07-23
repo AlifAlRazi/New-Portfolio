@@ -52,7 +52,7 @@ export default function AboutSection() {
         >
           {/* Main About Card — spans 2 cols */}
           <motion.div
-            className="glass-card p-8 md:col-span-2 group"
+            className="glass-card p-8 md:col-span-2 group bg-gradient-to-br from-[#160a36] via-[#0f0628] to-[#0a031c] border-violet-500/30 shadow-xl shadow-violet-950/40"
             variants={itemVariants}
           >
             <div className="flex items-center gap-3 mb-5">
@@ -247,7 +247,7 @@ export default function AboutSection() {
 
           {/* Contact Info Card */}
           <motion.div
-            className="glass-card p-6 group"
+            className="glass-card p-6 group bg-gradient-to-br from-[#061e1b] via-[#031412] to-[#020b0a] border-emerald-500/30 shadow-xl shadow-emerald-950/40"
             variants={itemVariants}
           >
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
