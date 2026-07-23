@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Linkedin, Mail, Heart, MessageCircle } from "lucide-react";
 
 export default function Footer() {
@@ -89,15 +90,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Center: Built with */}
+        {/* Center: Built by ToggleITAI */}
         <div className="text-center pt-6 border-t border-slate-100 dark:border-white/5">
-          <p className="text-xs text-slate-400 dark:text-slate-500 inline-flex items-center gap-1.5">
-            Built with
-            <Heart
-              size={12}
-              className="text-rose-500 fill-rose-500 animate-pulse"
-            />
-            using Next.js & Framer Motion
+          <p className="text-xs text-slate-400 dark:text-slate-500 flex flex-wrap items-center justify-center gap-1.5">
+            <span>Built by</span>
+            <Link
+              href="https://www.toggleitai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-bold text-violet-600 dark:text-violet-400 hover:underline"
+            >
+              <Image
+                src="/images/toggleit_logo.png"
+                alt="ToggleITAI Logo"
+                width={18}
+                height={18}
+                className="object-contain inline-block"
+              />
+              <span>ToggleITAI</span>
+            </Link>
+            <span>using Next.js & Framer Motion</span>
           </p>
         </div>
       </div>
