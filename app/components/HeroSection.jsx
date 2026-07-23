@@ -261,7 +261,7 @@ export default function HeroSection() {
               <div className="profile-ring" />
 
               {/* Main Avatar Frame */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-violet-400/40 bg-gradient-to-b from-[#140a38] via-[#0d0527] to-[#080218] shadow-2xl shadow-violet-600/40 z-10">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-violet-500/40 bg-black shadow-2xl shadow-violet-600/40 z-10">
                 {/* Under-Shoulder Glowing Ambient Atmosphere */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#8b5cf6_0%,#06b6d4_40%,transparent_75%)] opacity-80 z-0" />
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-t from-violet-500/90 via-cyan-500/50 to-transparent blur-xl z-0 animate-pulse" />
