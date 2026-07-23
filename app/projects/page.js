@@ -62,7 +62,7 @@ const allProjects = [
     category: "SaaS",
     description:
       "Emailyourprofessor.com is an AI-powered SaaS platform that helps students write context-aware emails to professors based on student and professor bios. Manages university listings, scheduled emails, and analytics dashboard.",
-    image: "/images/emailProfessor.png",
+    image: "/images/email_professor_real.png",
     technologies: ["Next.js", "Express.js", "MongoDB", "OpenAI API", "Node.js"],
     github: null,
     liveDemo: "https://emailyourprofessor.com",

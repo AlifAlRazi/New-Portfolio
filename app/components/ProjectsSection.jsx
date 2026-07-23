@@ -121,7 +121,7 @@ const projects = [
       "SaaS platform generating personalised, AI-written emails for students reaching out to professors.",
     description:
       "Developed a SaaS platform that generates personalised, AI-written emails for students reaching out to professors, reducing writing time significantly. Built full-stack with Express.js backend and MongoDB.",
-    image: "/images/emailProfessor.png",
+    image: "/images/email_professor_real.png",
     technologies: ["Next.js", "Express.js", "MongoDB", "OpenAI API"],
     github: null,
     liveDemo: "https://emailyourprofessor.com",
