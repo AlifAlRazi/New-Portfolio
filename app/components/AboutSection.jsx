@@ -50,42 +50,45 @@ export default function AboutSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {/* Main About Card — spans 2 cols */}
+          {/* 1. Main About Card — Full Background Picture (NSU Campus) */}
           <motion.div
-            className="glass-card p-8 md:col-span-2 group"
+            className="glass-card overflow-hidden relative p-8 md:col-span-2 flex flex-col justify-between group min-h-[280px]"
             variants={itemVariants}
           >
-            <div className="flex items-center gap-3 mb-5">
-              <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 shadow-lg shadow-violet-500/20">
-                <Sparkles size={20} className="text-white" />
+            {/* Full Card Background Image */}
+            <Image
+              src="/images/NSU.jpg"
+              alt="North South University"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700 z-0 opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70 z-10" />
+
+            <div className="relative z-20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 shadow-lg shadow-violet-500/20">
+                  <Sparkles size={20} className="text-white" />
+                </div>
+                <h3 className="text-xl font-black text-white">
+                  Personal Summary
+                </h3>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                Personal Summary
-              </h3>
+              <p className="text-slate-300 leading-relaxed mb-4 text-sm sm:text-base">
+                AI & software engineer and founder with a strong background in computer science, machine learning, and computer vision. Founder @{" "}
+                <span className="text-violet-400 font-bold">ToggleITAI</span>, building innovative, production-grade AI systems that drive real-world impact across SaaS, tech, and digital transformation.
+              </p>
+              <p className="text-slate-300 leading-relaxed text-sm">
+                Experienced in full-stack SaaS development, cloud infrastructure, and deploying intelligent solutions with{" "}
+                <span className="text-violet-300 font-semibold">LLMs</span>,{" "}
+                <span className="text-cyan-300 font-semibold">RAG pipelines</span>, and{" "}
+                <span className="text-blue-300 font-semibold">agentic workflows</span>.
+              </p>
             </div>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              AI & software engineer and founder with a strong foundation in computer science,
-              machine learning, and computer vision. Founder @{" "}
-              <span className="text-violet-600 dark:text-violet-400 font-bold">ToggleITAI</span>,
-              building innovative, production-grade AI systems that drive real-world impact across SaaS, tech, and digital transformation.
-            </p>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Experienced in full-stack SaaS development, cloud infrastructure, and deploying
-              intelligent solutions with{" "}
-              <span className="text-violet-600 dark:text-violet-400 font-semibold">LLMs</span>,{" "}
-              <span className="text-cyan-600 dark:text-cyan-400 font-semibold">
-                RAG pipelines
-              </span>
-              , and{" "}
-              <span className="text-blue-600 dark:text-blue-400 font-semibold">
-                agentic workflows
-              </span>
-              .
-            </p>
-            <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5">
+
+            <div className="relative z-20 mt-6 pt-4 border-t border-white/10">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-sm font-bold text-violet-600 dark:text-violet-400 hover:text-violet-500 dark:hover:text-violet-300 transition-colors group/link"
+                className="inline-flex items-center gap-2 text-sm font-bold text-violet-400 hover:text-violet-300 transition-colors group/link"
               >
                 Learn More About My Background
                 <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
@@ -93,51 +96,60 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* ToggleITAI Company Card */}
+          {/* 2. ToggleITAI Company Card — Full Background Picture */}
           <motion.div
-            className="glass-card p-6 flex flex-col justify-between group border-violet-500/30"
+            className="glass-card overflow-hidden relative p-6 flex flex-col justify-between group min-h-[280px] border-violet-500/40"
             variants={itemVariants}
           >
-            <div>
-              <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 inline-flex mb-4 shadow-lg shadow-violet-500/20">
+            {/* Full Background Image */}
+            <Image
+              src="/images/toggleit_real.png"
+              alt="ToggleITAI"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700 z-0"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/40 z-10" />
+
+            <div className="relative z-20">
+              <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 inline-flex mb-3 shadow-lg shadow-violet-500/20">
                 <Rocket size={20} className="text-white" />
               </div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-1">
+              <p className="text-xs font-semibold uppercase tracking-widest text-violet-400 mb-1">
                 Company & Venture
               </p>
-              <h4 className="text-2xl font-black text-slate-900 dark:text-white mb-2">
+              <h4 className="text-2xl font-black text-white mb-2">
                 ToggleITAI
               </h4>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-300 leading-relaxed">
                 Building next-generation AI SaaS products, custom LLM agentic workflows, and automated enterprise AI systems.
               </p>
             </div>
-            <Link
-              href="https://www.toggleitai.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-violet-600 dark:text-violet-400 hover:underline"
-            >
-              Visit toggleitai.com <ExternalLink size={12} />
-            </Link>
+
+            <div className="relative z-20 mt-4">
+              <Link
+                href="https://www.toggleitai.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-300 hover:text-white transition-colors bg-black/40 px-3 py-1.5 rounded-lg border border-violet-500/30 backdrop-blur-md"
+              >
+                Visit toggleitai.com <ExternalLink size={12} />
+              </Link>
+            </div>
           </motion.div>
 
-          {/* Location Card — Full Background Picture */}
+          {/* 3. Location Card — Full Background Picture (Galway.jpg) */}
           <motion.div
-            className="glass-card overflow-hidden flex flex-col justify-between group relative p-6 min-h-[220px]"
+            className="glass-card overflow-hidden flex flex-col justify-between group relative p-6 min-h-[250px]"
             variants={itemVariants}
           >
-            {/* Full Card Background Image */}
             <Image
               src="/images/Galway.jpg"
               alt="Galway, Ireland"
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-700 z-0"
             />
-            {/* Full Dark Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-950/30 z-10" />
 
-            {/* Top Pin & Badge */}
             <div className="relative z-20 flex justify-between items-start">
               <div className="p-2.5 rounded-xl bg-emerald-500/80 backdrop-blur-md text-white shadow-lg shadow-emerald-500/20">
                 <MapPin size={20} />
@@ -147,7 +159,6 @@ export default function AboutSection() {
               </span>
             </div>
 
-            {/* Bottom Text Details */}
             <div className="relative z-20 mt-8">
               <p className="text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-0.5">
                 Based in
@@ -161,87 +172,101 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Education Card */}
+          {/* 4. Education Card — Full Background Picture (TU Dublin) */}
           <motion.div
-            className="glass-card p-6 group"
+            className="glass-card overflow-hidden relative p-6 flex flex-col justify-between group min-h-[250px]"
             variants={itemVariants}
           >
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 inline-flex mb-4 shadow-lg shadow-blue-500/20">
-              <GraduationCap size={20} className="text-white" />
-            </div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3">
-              Education
-            </p>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20">
-                  <Image src="/images/TUD.jpg" alt="TU Dublin" fill className="object-cover" />
+            {/* Full Background Image */}
+            <Image
+              src="/images/TUD.jpg"
+              alt="Technological University Dublin"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700 z-0"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/50 z-10" />
+
+            <div className="relative z-20">
+              <div className="flex items-center justify-between mb-3">
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 inline-flex shadow-lg shadow-blue-500/20">
+                  <GraduationCap size={20} className="text-white" />
                 </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md text-blue-300 border border-blue-500/30">
+                  TU Dublin & NSU
+                </span>
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2">
+                Education
+              </p>
+
+              <div className="space-y-3">
                 <div>
-                  <p className="font-bold text-slate-900 dark:text-white text-sm">
+                  <p className="font-bold text-white text-sm">
                     MSc in Computing — AI
                   </p>
-                  <p className="text-xs text-slate-400">
-                    Technological University Dublin
-                  </p>
-                  <p className="text-[11px] text-violet-400 font-semibold">
-                    2025 – 2026
+                  <p className="text-xs text-slate-300">
+                    Technological University Dublin (2025–2026)
                   </p>
                 </div>
-              </div>
-              <div className="h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
-              <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-violet-500/20">
-                  <Image src="/images/NSU.jpg" alt="North South University" fill className="object-cover" />
-                </div>
+                <div className="h-px bg-white/10" />
                 <div>
-                  <p className="font-bold text-slate-900 dark:text-white text-sm">
+                  <p className="font-bold text-white text-sm">
                     BSc in CSE
                   </p>
-                  <p className="text-xs text-slate-400">
-                    North South University
-                  </p>
-                  <p className="text-[11px] text-violet-400 font-semibold">
-                    2020 – 2024 • CGPA: 3.51
+                  <p className="text-xs text-slate-300">
+                    North South University (CGPA: 3.51)
                   </p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Info Card */}
+          {/* 5. Contact Card — Full Glassmorphism Backdrop */}
           <motion.div
-            className="glass-card p-6 group"
+            className="glass-card p-6 flex flex-col justify-between group"
             variants={itemVariants}
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
-              Contact
-            </p>
-            <div className="space-y-4">
-              <a
-                href="mailto:alifalrazi1@gmail.com"
-                className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
-              >
-                <div className="p-2 rounded-lg bg-violet-500/10 border border-violet-500/20 group-hover/item:bg-violet-500/20 transition-colors">
-                  <Mail size={16} className="text-violet-600 dark:text-violet-400" />
-                </div>
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover/item:text-violet-600 dark:group-hover/item:text-violet-400 transition-colors">
-                  alifalrazi1@gmail.com
-                </span>
-              </a>
-              <a
-                href="https://wa.me/353894620802"
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-violet-400 mb-4">
+                Get in Touch
+              </p>
+              <div className="space-y-4">
+                <a
+                  href="mailto:alifalrazi1@gmail.com"
+                  className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
+                >
+                  <div className="p-2 rounded-lg bg-violet-500/10 border border-violet-500/20 group-hover/item:bg-violet-500/20 transition-colors">
+                    <Mail size={16} className="text-violet-400" />
+                  </div>
+                  <span className="text-xs font-semibold text-slate-200 group-hover/item:text-violet-300 transition-colors">
+                    alifalrazi1@gmail.com
+                  </span>
+                </a>
+                <a
+                  href="https://wa.me/353894620802"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
+                >
+                  <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover/item:bg-emerald-500/20 transition-colors">
+                    <Phone size={16} className="text-emerald-400" />
+                  </div>
+                  <span className="text-xs font-semibold text-slate-200 group-hover/item:text-emerald-300 transition-colors">
+                    WhatsApp: +353 894 620 802
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-white/10">
+              <Link
+                href="/resume/ALIF_AL_RAZI(CV).pdf"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 group/item hover:translate-x-1 transition-transform"
+                className="inline-flex items-center justify-center gap-2 w-full bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-500 hover:to-blue-500 text-white py-2.5 rounded-xl font-bold text-xs shadow-lg shadow-violet-500/20 transition-all hover:scale-[1.02]"
               >
-                <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover/item:bg-emerald-500/20 transition-colors">
-                  <Phone size={16} className="text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover/item:text-emerald-600 dark:group-hover/item:text-emerald-400 transition-colors">
-                  WhatsApp: +353 894 620 802
-                </span>
-              </a>
+                <Download size={14} />
+                Download CV
+              </Link>
             </div>
           </motion.div>
         </motion.div>
