@@ -124,23 +124,36 @@ export default function AboutSection() {
 
           {/* Location Card */}
           <motion.div
-            className="glass-card p-6 flex flex-col justify-between group"
+            className="glass-card overflow-hidden flex flex-col justify-between group"
             variants={itemVariants}
           >
-            <div>
-              <div className="p-2.5 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 inline-flex mb-4 shadow-lg shadow-emerald-500/20">
-                <MapPin size={20} className="text-white" />
+            {/* Galway Image Header */}
+            <div className="relative h-36 w-full overflow-hidden">
+              <Image
+                src="/images/Galway.jpg"
+                alt="Galway, Ireland"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0926] via-[#0d0926]/40 to-transparent" />
+              <div className="absolute top-3 left-3">
+                <div className="p-2 rounded-xl bg-emerald-500/80 backdrop-blur-md text-white shadow-lg">
+                  <MapPin size={18} />
+                </div>
               </div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">
+            </div>
+
+            <div className="p-6 pt-2">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">
                 Based in
               </p>
-              <p className="text-2xl font-black text-slate-900 dark:text-white">
+              <p className="text-2xl font-black text-white">
                 Galway, Ireland
               </p>
+              <p className="text-xs font-medium text-slate-400 mt-2">
+                Open to remote & global collaboration
+              </p>
             </div>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-3">
-              Open to remote & global collaboration
-            </p>
           </motion.div>
 
           {/* Education Card */}
