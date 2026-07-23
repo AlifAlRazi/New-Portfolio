@@ -15,7 +15,7 @@ const projects = [
       "AI SaaS & automation platform building custom LLM workflows, RAG agents, and intelligent software systems.",
     description:
       "Founded and engineered ToggleITAI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
-    image: "/images/tia.gif",
+    image: "/images/project_toggleit.png",
     technologies: [
       "Next.js",
       "Python",
@@ -37,23 +37,22 @@ const projects = [
   },
   {
     id: 2,
-    title: "ED AI LMS",
-    subtitle: "Knowledge Graph Personalised Learning",
+    title: "Alpine Impex Trading",
+    subtitle: "Global Import & Export Platform",
     shortDescription:
-      "AI-powered LMS using knowledge graphs and RAG to detect learning gaps and build personalized study paths.",
+      "International trade and supply chain platform showcasing global import-export products.",
     description:
-      "Built an AI-powered Learning Management System that uses knowledge graphs and RAG to detect individual learning gaps and deliver personalised study paths. Integrated Stripe for payments and Google Auth for user management.",
-    image: "/images/edai_real.png",
-    technologies: ["Next.js", "OpenAI API", "RAG", "Knowledge Graphs", "Stripe"],
+      "Designed and developed the official digital web platform for Alpine Impex Trading, presenting international trading products, supply chain capabilities, and global trade inquiry portals.",
+    image: "/images/alpine_impex_real.png",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js"],
     github: null,
-    liveDemo: "https://edai-lms.vercel.app/",
+    liveDemo: "https://www.alpineimpextrading.com/",
     features: [
-      "AI-powered knowledge gap detection",
-      "Personalised study path generation",
-      "Stripe payment integration",
-      "Google Auth",
+      "International import-export product catalog",
+      "Global trade inquiry booking portal",
+      "Responsive interactive trade showcase",
     ],
-    color: "from-indigo-500 to-violet-500",
+    color: "from-blue-500 to-indigo-500",
   },
   {
     id: 3,
@@ -77,44 +76,6 @@ const projects = [
   },
   {
     id: 4,
-    title: "Smart Surplus",
-    subtitle: "Food Waste Reduction Marketplace",
-    shortDescription:
-      "Marketplace connecting local businesses with customers to buy near-expiry surplus food at discounts.",
-    description:
-      "Marketplace platform where businesses list near-expiry products at reduced prices to minimise food waste. Integrated AI-powered pricing suggestions, Google Auth, and Stripe for payments.",
-    image: "/images/smart_surplus_real.png",
-    technologies: ["Next.js", "OpenAI API", "Google Auth", "Stripe"],
-    github: null,
-    liveDemo: "https://smart-surplus-taupe.vercel.app/",
-    features: [
-      "Near-expiry product marketplace",
-      "AI-powered pricing suggestions",
-      "Stripe payment integration",
-    ],
-    color: "from-emerald-500 to-teal-500",
-  },
-  {
-    id: 5,
-    title: "Alpine Impex Trading",
-    subtitle: "Global Import & Export Platform",
-    shortDescription:
-      "International trade and supply chain platform showcasing global import-export products.",
-    description:
-      "Designed and developed the official digital web platform for Alpine Impex Trading, presenting international trading products, supply chain capabilities, and global trade inquiry portals.",
-    image: "/images/alpine_impex_real.png",
-    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js"],
-    github: null,
-    liveDemo: "https://www.alpineimpextrading.com/",
-    features: [
-      "International import-export product catalog",
-      "Global trade inquiry booking portal",
-      "Responsive interactive trade showcase",
-    ],
-    color: "from-blue-500 to-indigo-500",
-  },
-  {
-    id: 6,
     title: "EmailYourProfessor.com",
     subtitle: "AI Email Outreach SaaS Platform",
     shortDescription:
@@ -132,6 +93,44 @@ const projects = [
       "Dashboard with email analytics",
     ],
     color: "from-pink-500 to-rose-500",
+  },
+  {
+    id: 5,
+    title: "AI-Powered PDF Reading Tool",
+    subtitle: "RAG Document Intelligence Platform",
+    shortDescription:
+      "Live AI-powered PDF reader tool enabling document analysis, context questions, and translation.",
+    description:
+      "A live AI-powered PDF reading tool allowing users to upload books or documents, interact with content using AI, ask context-aware questions, and translate passages.",
+    image: "/images/aiReader.png",
+    technologies: ["Next.js", "OpenAI API", "RAG", "LangChain", "Cloudinary"],
+    github: null,
+    liveDemo: "https://ai-reader-blue.vercel.app/",
+    features: [
+      "Interactive PDF document chat & QA",
+      "Multilingual translation of book passages",
+      "RAG document search & summaries",
+    ],
+    color: "from-indigo-500 to-violet-500",
+  },
+  {
+    id: 6,
+    title: "AI T-Shirt Designer",
+    subtitle: "Real-time Generative Design Tool",
+    shortDescription:
+      "Generative AI tool creating custom t-shirt graphics from text prompts in real-time.",
+    description:
+      "Real-time AI image generation tool allowing users to design custom t-shirts in seconds using text prompts. Integrated DALL·E generation with live 3D mockup previews.",
+    image: "/images/aiTshirt.png",
+    technologies: ["Next.js", "Tailwind CSS", "OpenAI API", "DALL·E"],
+    github: null,
+    liveDemo: "https://ai-t-shirt-pi.vercel.app/design",
+    features: [
+      "Text-prompt to t-shirt design generation",
+      "Instant DALL·E image rendering",
+      "Live 3D mockup visualization",
+    ],
+    color: "from-purple-500 to-pink-500",
   },
 ];
 
