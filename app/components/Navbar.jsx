@@ -3,9 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { Menu, X, Sun, Moon, ExternalLink } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -23,7 +22,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const { theme, setTheme } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -81,10 +79,6 @@ export default function Navbar() {
     }
   }, [pathname]);
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   return (
     <motion.header
       className={cn(
@@ -100,7 +94,7 @@ export default function Navbar() {
           className={cn(
             "flex justify-between items-center px-6 py-3 rounded-2xl transition-all duration-500",
             scrolled
-              ? "bg-white/70 dark:bg-[#0f0a28]/70 backdrop-blur-xl border border-slate-200/50 dark:border-violet-500/10 shadow-lg shadow-slate-200/20 dark:shadow-violet-500/5"
+              ? "bg-[#0f0a28]/80 backdrop-blur-xl border border-violet-500/10 shadow-lg shadow-violet-500/5"
               : "bg-transparent"
           )}
         >
@@ -121,8 +115,8 @@ export default function Navbar() {
                 className={cn(
                   "relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-lg flex items-center gap-1",
                   activeSection === link.id || (link.isPage && pathname === link.href)
-                    ? "text-violet-600 dark:text-violet-400 font-bold"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                    ? "text-violet-400 font-bold"
+                    : "text-slate-400 hover:text-slate-100"
                 )}
               >
                 {link.label}
@@ -142,48 +136,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right side: theme toggle + mobile menu */}
-          <div className="flex items-center gap-3">
-            {/* Theme Toggle */}
+          {/* Right side: Mobile Menu Toggle */}
+          <div className="flex items-center gap-3 md:hidden">
             <button
-              onClick={toggleTheme}
-              className="relative p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-violet-500/10 hover:border-violet-500/30 transition-all duration-300 group"
-              aria-label="Toggle theme"
-            >
-              <AnimatePresence mode="wait">
-                {theme === "dark" ? (
-                  <motion.div
-                    key="sun"
-                    initial={{ rotate: -90, scale: 0 }}
-                    animate={{ rotate: 0, scale: 1 }}
-                    exit={{ rotate: 90, scale: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Sun
-                      size={16}
-                      className="text-amber-500 group-hover:text-amber-400 transition-colors"
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: 90, scale: 0 }}
-                    animate={{ rotate: 0, scale: 1 }}
-                    exit={{ rotate: -90, scale: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon
-                      size={16}
-                      className="text-violet-600 group-hover:text-violet-500 transition-colors"
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-violet-500/10 text-foreground"
+              className="p-2.5 rounded-xl bg-white/5 border border-violet-500/10 text-slate-200"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -196,7 +152,7 @@ export default function Navbar() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="md:hidden mt-2 p-4 rounded-2xl bg-white/80 dark:bg-[#0f0a28]/80 backdrop-blur-xl border border-slate-200/50 dark:border-violet-500/10 shadow-xl"
+              className="md:hidden mt-2 p-4 rounded-2xl bg-[#0f0a28]/95 backdrop-blur-xl border border-violet-500/10 shadow-xl"
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -210,8 +166,8 @@ export default function Navbar() {
                     className={cn(
                       "text-left px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center justify-between",
                       activeSection === link.id || (link.isPage && pathname === link.href)
-                        ? "text-violet-600 dark:text-violet-400 bg-violet-500/10 font-bold"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"
+                        ? "text-violet-400 bg-violet-500/10 font-bold"
+                        : "text-slate-400 hover:bg-white/5"
                     )}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
