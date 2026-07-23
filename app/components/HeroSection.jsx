@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, FileText, Mail, Github, Linkedin, Sparkles, Brain, Code2, Rocket, Globe } from "lucide-react";
+import { ArrowDown, FileText, Mail, Github, Linkedin, Sparkles, Brain, Code2, Rocket, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Floating particles background
@@ -237,7 +237,7 @@ export default function HeroSection() {
                 className="p-3 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-violet-500/15 hover:border-emerald-500/40 text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-all hover:scale-110"
                 aria-label="WhatsApp"
               >
-                <Globe size={18} />
+                <MessageCircle size={18} />
               </Link>
             </motion.div>
           </motion.div>
