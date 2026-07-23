@@ -9,11 +9,11 @@ import { motion } from "framer-motion";
 const allProjects = [
   {
     id: 1,
-    title: "ToggleIt AI",
+    title: "ToggleITAI",
     subtitle: "AI Agency & Automation SaaS Platform",
     category: "AI/ML",
     description:
-      "Founded and engineered ToggleIt AI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
+      "Founded and engineered ToggleITAI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
     image: "/images/toggleit_real.png",
     technologies: ["Next.js", "Python", "OpenAI API", "LangChain", "RAG", "Vercel"],
     github: null,
@@ -50,10 +50,10 @@ const allProjects = [
     category: "AI/ML",
     description:
       "Built an AI-powered Learning Management System that uses knowledge graphs and RAG to detect individual learning gaps and deliver personalised study paths. Integrated Stripe for payments and Google Auth for user management.",
-    image: "/images/aiReader.png",
+    image: "/images/edai_real.png",
     technologies: ["Next.js", "OpenAI API", "RAG", "Knowledge Graphs", "Cloudinary", "Stripe"],
     github: null,
-    liveDemo: null,
+    liveDemo: "https://edai-lms.vercel.app/",
   },
   {
     id: 5,
@@ -86,10 +86,10 @@ const allProjects = [
     category: "Web",
     description:
       "Marketplace platform where businesses list near-expiry products at reduced prices to minimise food waste. Integrated AI-powered pricing suggestions, Google Auth, and Stripe for payments.",
-    image: "/images/textToImage.png",
+    image: "/images/smart_surplus_real.png",
     technologies: ["Next.js", "OpenAI API", "Google Auth", "Stripe"],
     github: null,
-    liveDemo: null,
+    liveDemo: "https://smart-surplus-taupe.vercel.app/",
   },
   {
     id: 8,

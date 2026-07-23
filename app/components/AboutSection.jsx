@@ -65,7 +65,7 @@ export default function AboutSection() {
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
               AI & software engineer and founder with a strong foundation in computer science,
               machine learning, and computer vision. Founder @{" "}
-              <span className="text-violet-600 dark:text-violet-400 font-bold">ToggleIt AI</span>,
+              <span className="text-violet-600 dark:text-violet-400 font-bold">ToggleITAI</span>,
               building innovative, production-grade AI systems that drive real-world impact across SaaS, tech, and digital transformation.
             </p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -92,7 +92,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* ToggleIt AI Company Card */}
+          {/* ToggleITAI Company Card */}
           <motion.div
             className="glass-card p-6 flex flex-col justify-between group border-violet-500/30"
             variants={itemVariants}
@@ -105,7 +105,7 @@ export default function AboutSection() {
                 Company & Venture
               </p>
               <h4 className="text-2xl font-black text-slate-900 dark:text-white mb-2">
-                ToggleIt AI
+                ToggleITAI
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                 Building next-generation AI SaaS products, custom LLM agentic workflows, and automated enterprise AI systems.

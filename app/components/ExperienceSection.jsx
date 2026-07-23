@@ -8,12 +8,12 @@ const experiences = [
   {
     role: "Founder & Lead AI Engineer",
     type: "Founder / Venture",
-    company: "ToggleIt AI",
+    company: "ToggleITAI",
     link: "https://www.toggleitai.com/",
     period: "2024 – Present",
     location: "Remote / Ireland",
     description:
-      "Founded and engineered ToggleIt AI, an AI development and automation firm building custom LLM agentic workflows, RAG pipelines, and intelligent SaaS products.",
+      "Founded and engineered ToggleITAI, an AI development and automation firm building custom LLM agentic workflows, RAG pipelines, and intelligent SaaS products.",
     bullets: [
       "Architected custom multi-agent LLM systems and RAG pipelines for client SaaS products and enterprise automation",
       "Engineered full-stack Next.js and Python cloud applications with scalable architecture",

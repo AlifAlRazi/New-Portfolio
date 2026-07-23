@@ -9,12 +9,12 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
   {
     id: 1,
-    title: "ToggleIt AI",
+    title: "ToggleITAI",
     subtitle: "AI Agency & Automation SaaS",
     shortDescription:
       "AI SaaS & automation platform building custom LLM workflows, RAG agents, and intelligent software systems.",
     description:
-      "Founded and engineered ToggleIt AI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
+      "Founded and engineered ToggleITAI, an AI development and automation company specializing in custom LLM agentic workflows, RAG pipelines, intelligent SaaS products, and digital transformation.",
     image: "/images/toggleit_real.png",
     technologies: [
       "Next.js",
@@ -37,6 +37,26 @@ const projects = [
   },
   {
     id: 2,
+    title: "ED AI LMS",
+    subtitle: "Knowledge Graph Personalised Learning",
+    shortDescription:
+      "AI-powered LMS using knowledge graphs and RAG to detect learning gaps and build personalized study paths.",
+    description:
+      "Built an AI-powered Learning Management System that uses knowledge graphs and RAG to detect individual learning gaps and deliver personalised study paths. Integrated Stripe for payments and Google Auth for user management.",
+    image: "/images/edai_real.png",
+    technologies: ["Next.js", "OpenAI API", "RAG", "Knowledge Graphs", "Stripe"],
+    github: null,
+    liveDemo: "https://edai-lms.vercel.app/",
+    features: [
+      "AI-powered knowledge gap detection",
+      "Personalised study path generation",
+      "Stripe payment integration",
+      "Google Auth",
+    ],
+    color: "from-indigo-500 to-violet-500",
+  },
+  {
+    id: 3,
     title: "Alpine Global Consultancy",
     subtitle: "HNW Relocation & Company Formation",
     shortDescription:
@@ -56,7 +76,26 @@ const projects = [
     color: "from-cyan-500 to-blue-500",
   },
   {
-    id: 3,
+    id: 4,
+    title: "Smart Surplus",
+    subtitle: "Food Waste Reduction Marketplace",
+    shortDescription:
+      "Marketplace connecting local businesses with customers to buy near-expiry surplus food at discounts.",
+    description:
+      "Marketplace platform where businesses list near-expiry products at reduced prices to minimise food waste. Integrated AI-powered pricing suggestions, Google Auth, and Stripe for payments.",
+    image: "/images/smart_surplus_real.png",
+    technologies: ["Next.js", "OpenAI API", "Google Auth", "Stripe"],
+    github: null,
+    liveDemo: "https://smart-surplus-taupe.vercel.app/",
+    features: [
+      "Near-expiry product marketplace",
+      "AI-powered pricing suggestions",
+      "Stripe payment integration",
+    ],
+    color: "from-emerald-500 to-teal-500",
+  },
+  {
+    id: 5,
     title: "Alpine Impex Trading",
     subtitle: "Global Import & Export Platform",
     shortDescription:
@@ -75,7 +114,7 @@ const projects = [
     color: "from-blue-500 to-indigo-500",
   },
   {
-    id: 4,
+    id: 6,
     title: "EmailYourProfessor.com",
     subtitle: "AI Email Outreach SaaS Platform",
     shortDescription:
@@ -92,58 +131,7 @@ const projects = [
       "Compose, send, and schedule emails",
       "Dashboard with email analytics",
     ],
-    color: "from-emerald-500 to-teal-500",
-  },
-  {
-    id: 5,
-    title: "AI PDF Reading Tool",
-    subtitle: "RAG-Powered Document Q&A",
-    shortDescription:
-      "AI-powered document Q&A platform enabling students to query PDFs with context-aware responses.",
-    description:
-      "Built an AI-powered document Q&A platform using RAG pipelines and OpenAI API, enabling students to extract and query information from PDFs with context-aware responses. Integrated Cloudinary for storage and Google Auth for secure access.",
-    image: "/images/aiReader.png",
-    technologies: [
-      "Next.js",
-      "OpenAI API",
-      "RAG",
-      "LangChain",
-      "Cloudinary",
-      "Google Auth",
-    ],
-    github: null,
-    liveDemo: "https://ai-reader-blue.vercel.app/",
-    features: [
-      "Upload and read PDFs online",
-      "AI-powered explanations for selected text",
-      "Ask questions directly from PDF content",
-      "Translate text into other languages",
-    ],
     color: "from-pink-500 to-rose-500",
-  },
-  {
-    id: 6,
-    title: "AI T-Shirt Designer",
-    subtitle: "Real-time AI Image Generation",
-    shortDescription:
-      "Real-time AI image generation tool for designing custom t-shirts using text prompts.",
-    description:
-      "Created a real-time AI image generation tool allowing users to design custom t-shirts in seconds using text prompts. Integrated OpenAI image generation with a clean, responsive UI.",
-    image: "/images/aiTshirt.png",
-    technologies: [
-      "Next.js",
-      "Tailwind CSS",
-      "OpenAI API",
-      "AI Image Generation (DALL·E)",
-    ],
-    github: null,
-    liveDemo: "https://ai-t-shirt-pi.vercel.app/design",
-    features: [
-      "AI-generated t-shirt designs from text prompts",
-      "Live t-shirt mockup preview",
-      "One-click design generation",
-    ],
-    color: "from-amber-500 to-orange-500",
   },
 ];
 
