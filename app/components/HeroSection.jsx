@@ -261,16 +261,21 @@ export default function HeroSection() {
               <div className="profile-ring" />
 
               {/* Main Avatar Frame */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-violet-500/30 bg-black shadow-2xl shadow-violet-950/80 z-10">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-violet-400/40 bg-gradient-to-b from-[#140a38] via-[#0d0527] to-[#080218] shadow-2xl shadow-violet-600/40 z-10">
+                {/* Under-Shoulder Glowing Ambient Atmosphere */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#8b5cf6_0%,#06b6d4_40%,transparent_75%)] opacity-80 z-0" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-t from-violet-500/90 via-cyan-500/50 to-transparent blur-xl z-0 animate-pulse" />
+
                 <Image
                   src="/images/alif.png"
                   alt="Alif Al Razi — AI Engineer"
                   fill
-                  className="object-cover scale-105 hover:scale-110 transition-transform duration-700"
+                  className="object-cover scale-105 hover:scale-110 transition-transform duration-700 relative z-10"
                   priority
                 />
-                {/* Subtle dark vignette overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+
+                {/* Upward Shoulder Glow Highlight */}
+                <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-violet-600/60 via-cyan-400/30 to-transparent mix-blend-screen pointer-events-none z-20" />
               </div>
 
               {/* Floating Pill Badges around Image */}
