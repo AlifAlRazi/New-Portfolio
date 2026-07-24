@@ -6,6 +6,22 @@ import Link from "next/link";
 
 const experiences = [
   {
+    role: "RAIMS Work Experience Program Participant",
+    type: "Part-time",
+    company: "RAIMS® by Orcawise",
+    period: "Jun 2026 – Present",
+    location: "County Dublin, Ireland",
+    description:
+      "Contributing to RAIMS® (Responsible AI Management System), a live enterprise system operationalizing Responsible AI frameworks aligned with the EU AI Act and ISO 42001.",
+    bullets: [
+      "Contributing to RAIMS® (Responsible AI Management System), a live enterprise system operationalizing Responsible AI frameworks aligned with the EU AI Act and ISO 42001",
+      "Working across the AI Engineering track's three teams: building structured data extraction pipelines with Python, Selenium, and APIs (EXTRACT); fine-tuning LLMs and building RAG/agentic AI pipelines (CUSTOMIZE); and developing React/Next.js front-ends for LLM-powered chatbots and Q&A systems (LOAD)",
+      "Bridging regulatory compliance requirements with hands-on enterprise AI engineering as part of a structured, supervised work experience program",
+    ],
+    tech: ["Python", "Selenium", "RAG", "Agentic AI", "React", "Next.js", "LLM Fine-Tuning", "EU AI Act"],
+    color: "from-emerald-500 to-teal-500",
+  },
+  {
     role: "Founder & Lead AI Engineer",
     type: "Founder / Venture",
     company: "ToggleITAI",
